@@ -264,7 +264,7 @@
     <script src="js/plugins/flot/jquery.flot.resize.js"></script>
 
     <!-- ChartJS-->
-    <script src="js/plugins/chartJs/dist/chart.min.js"></script>
+    <script src="js/plugins/chartJs/dists/chart.min.js"></script>
 
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
