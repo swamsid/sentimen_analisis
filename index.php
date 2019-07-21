@@ -264,7 +264,7 @@
     <script src="js/plugins/flot/jquery.flot.resize.js"></script>
 
     <!-- ChartJS-->
-    <script src="js/plugins/chartJs/Chart.min.js"></script>
+    <script src="js/plugins/chartJs/dist/chart.min.js"></script>
 
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
@@ -283,6 +283,7 @@
                 { label: "Data 1", data: d1, color: '#17a084'},
                 { label: "Data 2", data: d2, color: '#127e68' }
             ];
+
             $.plot($("#flot-chart1"), data1, {
                 xaxis: {
                     tickDecimals: 0
@@ -313,51 +314,63 @@
                 }
             });
 
-            var lineData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [
-                    {
-                        label: "Example dataset",
-                        fillColor: "rgba(220,220,220,0.5)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [65, 59, 40, 51, 36, 25, 40]
-                    },
-                    {
-                        label: "Example dataset",
-                        fillColor: "rgba(26,179,148,0.5)",
-                        strokeColor: "rgba(26,179,148,0.7)",
-                        pointColor: "rgba(26,179,148,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(26,179,148,1)",
-                        data: [48, 48, 60, 39, 56, 37, 30]
-                    }
-                ]
-            };
-
-            var lineOptions = {
-                scaleShowGridLines: true,
-                scaleGridLineColor: "rgba(0,0,0,.05)",
-                scaleGridLineWidth: 1,
-                bezierCurve: true,
-                bezierCurveTension: 0.4,
-                pointDot: true,
-                pointDotRadius: 4,
-                pointDotStrokeWidth: 1,
-                pointHitDetectionRadius: 20,
-                datasetStroke: true,
-                datasetStrokeWidth: 2,
-                datasetFill: true,
+            var config = {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Unfilled',
+                    fill: false,
+                    backgroundColor: '#ff0000',
+                    borderColor: '#ff0000',
+                    data: [20, 30, 9, 12, 13, 81],
+                }, {
+                    label: 'Dashed',
+                    fill: false,
+                    backgroundColor: '#00ff00',
+                    borderColor: '#00ff00',
+                    data: [42, 16, 7, 31, 39, 55],
+                }]
+            },
+            options: {
                 responsive: true,
-            };
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Line Chart'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: false,
+                            labelString: 'Month'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: false,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
 
 
             var ctx = document.getElementById("lineChart").getContext("2d");
-            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+            var myNewChart = Chart.Line(ctx, config);
 
         });
     </script>
