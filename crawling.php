@@ -26,17 +26,20 @@
                         <div class="col-md-12" style="padding: 0px;">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <span class="label label-warning pull-right">Data has changed</span>
-                                    <h5>Data Testing Yang Sudah Terkumpul</h5>
+                                    <span class="label label-warning pull-right">Total 1 Data</span>
+                                    <h5>Data Hasil Crawling Terkumpul</h5>
                                 </div>
                                 <div class="ibox-content">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Kode</th>
-                                                    <th class="text-center">Input</th>
+                                                    <th width="5%" class="text-center">No</th>
+                                                    <th width="10%" class="text-center">Author</th>
+                                                    <th width="13%" class="text-center">Tanggal Posting</th>
+                                                    <th width="17%" class="text-center">Link</th>
+                                                    <th class="text-center">Sumber</th>
+                                                    <th class="text-center">Inputan</th>
                                                     <th class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -44,9 +47,12 @@
                                             <tbody>
                                                 <tr class="gradeX">
                                                     <td class="text-center">1</td>
-                                                    <td class="text-center">TXT-01120</td>
+                                                    <td class="text-center">@swamsid</td>
+                                                    <td class="text-center">08/07/2019</td>
+                                                    <td class="text-center">www.twitter.com</td>
+                                                    <td class="text-center">Twitter</td>
                                                     <td>
-                                                        terima kasih, mmg di modem kami ada restat... cepat sekali.... tanggapannya...
+                                                        terima kasih, mmg di modem kami ada rest ...
                                                     </td>
                                                     <td class="text-center">
                                                         <button class="btn btn-xs btn-primary btn-detail" data-id="1">
@@ -79,7 +85,7 @@
             <div class="modal-dialog">
             <div class="modal-content animated fadeIn">
                     <div class="modal-header" style="padding: 10px;">
-                        <span class="modal-title" style="font-size: 14pt; font-weight: 600">Detail Data Training</span>
+                        <span class="modal-title" style="font-size: 14pt; font-weight: 600">Detail Data Crawling</span>
                     </div>
                     <div class="modal-body">
                        <div class="row" id="detail-wrap">
@@ -127,7 +133,7 @@
 
                 $('#detail-wrap').html('<center><small>Sedang Mengambil Data</small></center>');
                 $('#modal-detail').modal('show');
-                $('#detail-wrap').load('pages/data_testing/detail.php?id='+ctx.data('id')+'&ctx='+ctx.data('conteks'));
+                $('#detail-wrap').load('pages/crawling/detail.php?id='+ctx.data('id')+'&ctx='+ctx.data('conteks'));
             })
         })
     </script>

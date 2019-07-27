@@ -26,7 +26,7 @@
                         <div class="col-md-12" style="padding: 0px;">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <span class="label label-warning pull-right">Data has changed</span>
+                                    <span class="label label-warning pull-right">Total Data 1</span>
                                     <h5>Data Testing Hasil Stemming</h5>
                                 </div>
                                 <div class="ibox-content">
