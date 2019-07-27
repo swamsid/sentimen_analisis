@@ -16,18 +16,9 @@
                 </li>
 
                 <li>
-                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-th-large" style="color: #33b5e5;"></i> &nbsp;Data Hasil Crawling &nbsp;<span class="caret"></span>
+                    <a href="crawling.php">
+                        <i class="fa fa-th-large" style="color: #33b5e5;"></i> &nbsp;Data Hasil Crawling
                     </a>
-                    <ul role="menu" class="dropdown-menu">
-                        <li>
-                            <a href="testing.php"><i class="fa fa-database fa-fw" style="color: #ff4444;"></i> &nbsp; Data Testing</a>
-                        </li>
-
-                        <li>
-                            <a href="training.php"><i class="fa fa-database fa-fw" style="color: #ff4444;"></i> &nbsp; Data Training</a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>
@@ -55,7 +46,7 @@
 
                 <li>
                     <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-th-large" style="color: #33b5e5;"></i> &nbsp;Data Training * Testing &nbsp;<span class="caret"></span>
+                        <i class="fa fa-th-large" style="color: #33b5e5;"></i> &nbsp;Data Training / Testing &nbsp;<span class="caret"></span>
                     </a>
                     <ul role="menu" class="dropdown-menu">
                         <li>

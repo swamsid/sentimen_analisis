@@ -14,7 +14,7 @@ class WordCloudRenderer
         $image = imagecreatetruecolor($cloud->getImageWidth(), $cloud->getImageHeight());
         imagealphablending($image, false);
         imagesavealpha($image, true);
-        $transColour = imagecolorallocatealpha($image, 0, 0, 0, 1);
+        $transColour = imagecolorallocatealpha($image, 255, 255, 255, 1);
         imagefill($image, 0, 0, $transColour);
 
         $centerX = (int)$cloud->getImageWidth() / 2;
