@@ -73,6 +73,22 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <span class="label label-warning pull-right">Data has changed</span>
+                                        <h5>Trend Total Data Perbulan</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row text-center">
+                                            <div style="object-fit: scale-down; width: 100%; background: red; padding: 0px;">
+                                                <img class="img img-responsive" src="world_cloud/demo/getimg.php"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-lg-7">

@@ -12,18 +12,12 @@ use SixtyNine\WordCloud\FrequencyTable\FrequencyTableFactory;
 use SixtyNine\WordCloud\Builder\Context\BuilderContextFactory;
 use SixtyNine\WordCloud\ImageBuilder\RawImageRenderer;
 
-$url = isset($_POST['url']) && $_POST['url'] ? : 'https://en.wikipedia.org/wiki/Wikipedia';
-$text = file_get_contents($url);
-$d = new DOMDocument;
-$mock = new DOMDocument;
-$d->loadHTML($text);
-$body = $d->getElementsByTagName('body')->item(0);
-foreach ($body->childNodes as $child) {
-    $mock->appendChild($mock->importNode($child, true));
-}
-$text = html_entity_decode(strip_tags($mock->saveHTML()));
 
-$img_width = 800;
+$text = 'aa bb';
+
+// echo $text;
+
+$img_width = 100;
 $img_height = 640;
 
 $palette = Palette::getNamedPalette($_POST['palette'] ? : 'grey');
@@ -47,32 +41,5 @@ $imgRenderer = new RawImageRenderer(
 );
 
 ?>
-<body bgcolor="black">
-<div class="controls">
-    <form method="post">
-        <input type="text" name="url"/>
-        <select name="palette">
-            <option value="aqua">Aqua</option>
-            <option value="yellow/blue">Yellow/Blue</option>
-            <option value="grey">Greyscale</option>
-            <option value="brown">Brown</option>
-            <option value="army">Army</option>
-            <option value="pastel">Pastel</option>
-            <option value="red">Red</option>
-        </select>
-        <select name="font">
-            <option value="Airmole_Antique.ttf">Airmole Antique</option>
-            <option value="Airmole_Shaded.ttf">Airmole Shaded</option>
-            <option value="Alexis_3D.ttf">Alexis 3D</option>
-            <option value="Almonte_Snow.ttf">Almonte Snow</option>
-            <option value="Arial.ttf">Arial</option>
-            <option value="Paper_Cut.ttf">Paper Cut</option>
-            <option value="TheThreeStoogesFont.ttf">The Three Stooges</option>
-        </select>
-        <input type="submit" value="Go"/>
-    </form>
-</div>
-<div class="word-cloud">
-    <img src="data:image/png;base64,<?= base64_encode($imgRenderer->getImage()) ?>"/>
-</div>
-</body>
+
+<img src="data:image/png;base64,<?= base64_encode($imgRenderer->getImage()) ?>" width="100%"/>

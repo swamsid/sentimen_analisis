@@ -49,7 +49,47 @@
                                                         terima | kasih | cepat | banyak
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="1">
+                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="1" data-conteks="testing">
+                                                            <i class="fa fa-folder-open"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12" style="padding: 0px;">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <span class="label label-warning pull-right">Data has changed</span>
+                                    <h5>Data Training Hasil Stemming</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">No</th>
+                                                    <th class="text-center">Kode</th>
+                                                    <th class="text-center">Hasil Stemming</th>
+                                                    <th class="text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr class="gradeX">
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">TXT-01120</td>
+                                                    <td>
+                                                        terima | kasih | cepat | banyak
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="1" data-conteks="training">
                                                             <i class="fa fa-folder-open"></i>
                                                         </button>
                                                     </td>
@@ -127,7 +167,7 @@
 
                 $('#detail-wrap').html('<center><small>Sedang Mengambil Data</small></center>');
                 $('#modal-detail').modal('show');
-                $('#detail-wrap').load('pages/stemming/detail.php?id='+ctx.data('id'));
+                $('#detail-wrap').load('pages/stemming/detail.php?id='+ctx.data('id')+'&ctx='+ctx.data('conteks'));
             })
         })
     </script>

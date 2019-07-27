@@ -14,7 +14,7 @@ class WordCloudRenderer
         $image = imagecreatetruecolor($cloud->getImageWidth(), $cloud->getImageHeight());
         imagealphablending($image, false);
         imagesavealpha($image, true);
-        $transColour = imagecolorallocatealpha($image, $bgcol[0],$bgcol[1], $bgcol[2], $bgcol[3]);
+        $transColour = imagecolorallocatealpha($image, 0, 0, 0, 1);
         imagefill($image, 0, 0, $transColour);
 
         $centerX = (int)$cloud->getImageWidth() / 2;
@@ -28,10 +28,10 @@ class WordCloudRenderer
         }
 
         // Crop the image
-        $image = $this->cropImage($image, $x1, $y1, $x2, $y2, $bgcol);
+        // $image = $this->cropImage($image, $x1, $y1, $x2, $y2, $bgcol);
 
         // Adjust the map to the cropped image
-        $cloud->getMask()->adjust(-$x1, -$y1);
+        // $cloud->getMask()->adjust(-$x1, -$y1);
 
         return $image;
     }

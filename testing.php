@@ -127,7 +127,7 @@
 
                 $('#detail-wrap').html('<center><small>Sedang Mengambil Data</small></center>');
                 $('#modal-detail').modal('show');
-                $('#detail-wrap').load('pages/data_testing/detail.php?id='+ctx.data('id'));
+                $('#detail-wrap').load('pages/data_testing/detail.php?id='+ctx.data('id')+'&ctx='+ctx.data('conteks'));
             })
         })
     </script>
