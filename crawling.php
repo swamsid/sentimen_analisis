@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include 'lib/connection.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -45,21 +50,33 @@
                                             </thead>
 
                                             <tbody>
+
+                                        <?php
+                                            $sql = "SELECT * FROM data_crawling";
+                                            $result = $con->query($sql) or die (mysqli_error($con));
+                                            $idx = 1;
+
+                                            while($row = $result->fetch_assoc()){
+                                        ?>
                                                 <tr class="gradeX">
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">@swamsid</td>
-                                                    <td class="text-center">08/07/2019</td>
-                                                    <td class="text-center">www.twitter.com</td>
-                                                    <td class="text-center">Twitter</td>
+                                                    <td class="text-center"><?= $idx ?></td>
+                                                    <td class="text-center"><?= $row['dc_author'] ?></td>
+                                                    <td class="text-center"><?= $row['dc_tanggal'] ?></td>
+                                                    <td class="text-center"><?= $row['dc_link'] ?></td>
+                                                    <td class="text-center"><?= $row['dc_sumber'] ?></td>
                                                     <td>
-                                                        terima kasih, mmg di modem kami ada rest ...
+                                                        <?= $row['dc_inputan'] ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="1">
+                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="<?= $row['dc_id'] ?>">
                                                             <i class="fa fa-folder-open"></i>
                                                         </button>
                                                     </td>
                                                 </tr>
+                                        <?php
+                                                $idx++;
+                                            };
+                                        ?>
                                             </tbody>
                                         </table>
                                     </div>

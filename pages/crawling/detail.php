@@ -1,4 +1,18 @@
+<?php
+    session_start();
+    include '../../lib/connection.php';
+    include '../../plugins/tokenizer-master/tokenize.php';
+    include '../../plugins/sastrawi-master/stopword.php';
+    include '../../plugins/sastrawi-master/stemmer.php';
 
+    $sql = "SELECT * FROM data_crawling where dc_id = ".$_GET['id'];
+    $result = $con->query($sql) or die (mysqli_error($con));
+    $row = $result->fetch_assoc();
+
+    $tokenize = tokenize(strtolower($row['dc_inputan']));
+    $stopword = tokenize(stopword(strtolower($row['dc_inputan'])));
+    $stemmer = tokenize(stopword(stemmer($row['dc_inputan'])));
+?>
 
 
 <div class="col-md-12" style="font-weight: bold; padding: 0px;">
@@ -6,7 +20,7 @@
  </div>
 
  <div class="col-md-12" style="font-weight: normal; background: white; padding: 8px 10px; margin-top: 8px; box-shadow: 0px 0px 5px #ddd;">
-      terima kasih, mmg di modem kami ada restat... cepat sekali tanggapannya.. mksh banyak.. kami akan coba di useetv kami
+      <?= $row['dc_inputan'] ?>
  </div>
 
  <div class="col-md-12" style="font-weight: bold; padding: 0px; margin-top: 20px;">
@@ -14,7 +28,7 @@
  </div>
 
  <div class="col-md-12" style="font-weight: normal; background: white; padding: 8px 10px; margin-top: 8px; box-shadow: 0px 0px 5px #ddd;">
-      terima kasih, mmg di modem kami ada restat... cepat sekali tanggapannya.. mksh banyak.. kami akan coba dl useetv kami
+      <?= strtolower($row['dc_inputan']) ?>
  </div>
 
  <div class="col-md-12" style="font-weight: bold; padding: 0px; margin-top: 20px;">
@@ -22,7 +36,7 @@
  </div>
 
  <div class="col-md-12" style="font-weight: normal; background: white; padding: 8px 10px; margin-top: 8px; box-shadow: 0px 0px 5px #ddd;">
-      terima | kasih | mmg | di | modem | kami | ada | restat | cepat | sekali | tanggapannya | mksh | banyak | kami | akan | coba | dl | useetv | kami
+      <?= implode(' | ', $tokenize) ?>
  </div>
 
  <div class="col-md-12" style="font-weight: bold; padding: 0px; margin-top: 20px;">
@@ -30,7 +44,7 @@
  </div>
 
  <div class="col-md-12" style="font-weight: normal; background: white; padding: 8px 10px; margin-top: 8px; box-shadow: 0px 0px 5px #ddd;">
-      terima | kasih | mmg | modem | restat | cepat | tanggapannya | mksh | banyak | coba | dl | useetv
+      <?= implode(' | ', $stopword) ?>
  </div>
 
  <div class="col-md-12" style="font-weight: bold; padding: 0px; margin-top: 20px;">
@@ -38,5 +52,5 @@
  </div>
 
  <div class="col-md-12" style="font-weight: normal; background: white; padding: 8px 10px; margin-top: 8px; box-shadow: 0px 0px 5px #ddd;">
-      terima | kasih | cepat | banyak
+      <?= implode(' | ', $stemmer) ?>
  </div>

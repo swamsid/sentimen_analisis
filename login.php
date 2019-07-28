@@ -1,4 +1,31 @@
 
+<?php
+    session_start();
+    include 'lib/connection.php';
+
+    if(isset($_SESSION['login'])){
+        echo '<script> window.location = "index.php" </script>';
+    }
+
+     $falsed = false;
+
+    if(isset($_POST['login'])){
+
+        $sql = "SELECT * FROM user where us_username = '".$_POST['email']."' and us_password = '".$_POST['password']."'";
+        $result = $con->query($sql) or die (mysqli_error($con));
+        $counter = mysqli_num_rows($result);
+        $row = $result->fetch_assoc();
+
+        if($counter){
+            $_SESSION['login'] = $row['us_id'];
+            echo '<script> window.location = "index.php" </script>';
+        }else{
+            $falsed = true;
+        }
+
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -23,14 +50,19 @@
         <div>
             <h3>Selamat Datang</h3>
             <p>Login Untuk Masuk ke Halaman Utama</p>
-            <form class="m-t" role="form" action="index.html">
+            <?php 
+                if($falsed)
+                    echo '<p class="text-danger">User Tidak Bisa Ditemukan, Silahkan Coba Lagi.</p>';
+
+             ?>
+            <form class="m-t" role="form" action="login.php" method="post">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
+                    <input type="text" class="form-control" name="email" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required="">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                <button type="submit" class="btn btn-primary block full-width m-b" name="login">Login</button>
 
                 <!-- <a href="#"><small>Forgot password?</small></a> -->
                 <!-- <p class="text-muted text-center"><small>Do not have an account?</small></p> -->
