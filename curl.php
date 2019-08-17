@@ -23,12 +23,13 @@
         return $output;
     }
 
+
     $html = get_html('https://mediakonsumen.com/?s=indihome#gsc.tab=0');
     $dom = new DomDocument();
 
     @$dom->loadHTML($html);
 
-    $classname="article-content";
+    $classname = "article-content";
     $finder = new DomXPath($dom);
     $spaner = $finder->query("//*[contains(@class, '$classname')]");
     $span = $spaner->item(0);

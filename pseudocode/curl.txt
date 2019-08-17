@@ -1,0 +1,95 @@
+
+Deklarasi : 
+	
+	variabel curl 		// variabel untuk menyimpan objek curl dari php
+	variabel output 	// variabel untuk menyimpan hasil curl
+	variabel link 		// variabel string untuk menyimpan alamat url yang akan dituju
+	variabel html 		// variabel untuk menyimpan nilai balik dari fungsi ambil_html
+	variabel dom 		// variabel untuk menyimpan class DomDocument dari php
+	variabel classname	// variabel untuk menyimpan nama class html yang akan dicari
+	variabel finder 	// variabel untuk menyimpan class DomXpath dari php
+	variabel data 		// variabel untuk menyimpan hasil akhir dari curl
+
+Deskripsi : 
+	start;
+
+		// membuat fungsi untuk mengambil halaman sesuai url 
+			fungsi ambil_html(String link){
+
+				// Inisialisasi fungsi curl dari php, disimpan kedalam variable $curl;
+					curl = curl_init(); 
+
+				// konfigurasi alamat url pada curl sesuai dengan string link
+					curl_setopt(curl, CURLOPT_URL, link);
+
+				// konfigurasi hasil curl dalam bentuk string 
+					curl_setopt(curl, CURLOPT_RETURNTRANSFER, 1);
+
+				// Eksekusi curl dimana hasil curl akan disimpan pada variabel output
+					output = curl_exec(curl);
+
+				// Menutup curl
+					curl_close(curl);
+
+				// mengembalikan hasil curl pada variabel output
+		        	return $output;
+
+			}
+
+		// memanggil fungsi ambil_html dengan memberikan nilai 'twitter.com' pada atribut dan menyimpan hasilnya pada
+		// variabel html
+			html = ambil_html('twitter.com');
+
+		// inisialisai class DomDocument yang disimpan ke dalam variabel dom
+			dom = new DomDocument();
+
+		// memasukkan hasil curl pada variabel html ke dalam variabel dom
+			dom->loadHTML($html);
+
+		// memberikan nilai pada variabel classname
+			classname = "article-content";
+
+		// mengambil data html dari variabel dom dengan menggunakan class php DomXPath dan disimpan kedalaman variabel finder
+			$finder = new DomXPath($dom);
+
+		// melakukan pencarian nama class sesuai dengan variabel classname pada variabel finder dan disimpan
+		// ke dalam variabel spaner
+			spaner = $finder->query("//*[contains(@class, '$classname')]");
+
+		// inisialisasi array kosong untuk menyimpan hasil akhir
+			data = [];
+
+
+		// melakukan looping terhadap data spanner yang sudah ada
+			for(spaner as key => dd)
+
+				$input = $tanggal = $auth = "Tidak Ada"; $links = "mediakonsumen.com";
+
+		        $link =  $dd->getElementsByTagName('h2');
+		        $tgl =  $dd->getElementsByTagName('time');
+		        $author =  $dd->getElementsByTagName('span');
+
+		        if($link->item(0)){
+		            // var_dump($author->item(1)->nodeValue);
+
+		            $input = $link->item(0)->nodeValue;
+
+		            if($tgl->item(0)){
+		                $tgl = $tgl->item(0)->nodeValue;
+		            }
+		            if($author->item(1)){
+		                $auth = $author->item(1)->nodeValue;
+		            }
+
+		            array_push($data, [
+		                'input'     => mysqli_real_escape_string($con, trim($input)),
+		                'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl)),
+		                'author'    => mysqli_real_escape_string($con, $auth),
+		                'link'      => mysqli_real_escape_string($con, $links),
+		                'sumber'    => mysqli_real_escape_string($con, 'mediakonsumen.com')
+		            ]);
+		        }
+
+			endfor
+
+	end; 
