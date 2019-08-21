@@ -72,17 +72,17 @@
 
     // // echo json_encode($data);
 
-    // $trct = 'TRUNCATE data_crawling;';
-    // $exe = $result = $con->query($trct) or die (mysqli_error($con));
+    $trct = 'TRUNCATE data_crawling;';
+    $exe = $result = $con->query($trct) or die (mysqli_error($con));
 
-    // $query = 'insert into data_crawling(dc_id, dc_author, dc_tanggal, dc_link, dc_sumber, dc_inputan) values ';
+    $query = 'insert into data_crawling(dc_id, dc_author, dc_tanggal, dc_link, dc_sumber, dc_inputan) values ';
 
-    // foreach ($data as $key => $dts) {
-    //     $query .= '("'.($key+1).'", "'.$dts['author'].'", "'.$dts['tgl'].'", "'.$dts['link'].'", "'.$dts['sumber'].'", "'.$dts['input'].'"),';
-    // }
+    foreach ($data as $key => $dts) {
+        $query .= '("'.($key+1).'", "'.$dts['author'].'", "'.$dts['tgl'].'", "'.$dts['link'].'", "'.$dts['sumber'].'", "'.$dts['input'].'"),';
+    }
 
-    // $qryVal = rtrim($query, ',');
-    // $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
+    $qryVal = rtrim($query, ',');
+    $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
     
     // echo 'Berhasil';
 

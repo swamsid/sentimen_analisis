@@ -143,10 +143,12 @@
 
             });
 
-            $('.btn-detail').click(function(evt){
+            $('.dataTables-example').on('click', '.btn-detail', function(evt){
                 evt.preventDefault();
 
                 var ctx = $(this);
+
+                alert('aa');
 
                 $('#detail-wrap').html('<center><small>Sedang Mengambil Data</small></center>');
                 $('#modal-detail').modal('show');
