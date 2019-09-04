@@ -148,7 +148,7 @@
 
                 var ctx = $(this);
 
-                alert('aa');
+                // alert('aa');
 
                 $('#detail-wrap').html('<center><small>Sedang Mengambil Data</small></center>');
                 $('#modal-detail').modal('show');

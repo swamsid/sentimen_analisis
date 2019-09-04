@@ -28,12 +28,22 @@
     $hasil = []; 
 
     foreach($stemming as $key => $data){
-    	$hasil = array_unique(array_merge($hasil, $data));
+
+    	$sqlCek = "SELECT * FROM kamus_liu where text = '".$data[0]."'";
+    	$resultCek = $con->query($sqlCek) or die (mysqli_error($con));
+    	$countCek = count($resultCek->fetch_all());
+
+    	// print $data[0].' = '.$countCek;
+
+    	if($countCek > 0){
+
+    		array_push($hasil, $data[0]);
+    	}
 
     	// print json_encode($data);
     }
 
-    // echo json_encode($hasil);
+    print json_encode($hasil)
 
 ?>
 
@@ -62,7 +72,7 @@
 	</head>
 	<body>
 
-		<div style="width: 20000px; overflow-y: scroll;">
+		<div style="width: 1000px; overflow-y: scroll;">
 			<table id="mytable">
 				<tr>
 					<th>No</th>
