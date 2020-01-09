@@ -29,6 +29,15 @@
 
             <div class="wrapper wrapper-content">
                 <div class="container">
+                    <div class="row" style="margin-top: -20px;">
+                        <div class="col-md-12">
+                            <div class="alert alert-info text-center">
+                                Jangan Lupa Untuk Memperbarui Data Terbaru. Terakhir diperbarui pada tanggal <b>19/01/2019</b>.<br/>
+                                <a class="btn btn-primary btn-sm" href="#" style="margin-top: 15px;" id="generate">Perbarui Data Sekarang</a>.
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="col-md-12" style="padding: 0px;">
@@ -148,15 +157,83 @@
         </div>
     </div>
 
+    <div class="modal inmodal" id="modalGenerate" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="height: 550px;">
+                    <div class="row" id="button-content">
+                        <div class="col-md-12 text-center">
+                            Apa anda yakin ingin melakukan perbaruan data sekarang ?
+                        </div>
+
+                        <div class="col-md-12 text-center m-t">
+                            <button class="btn btn-primary btn-sm" id="confirm-generate">Ya, perbarui sekarang !</button> &nbsp; &nbsp;
+                            <button class="btn btn-white btn-sm" data-dismiss="modal">Tidak, jangan dulu deh</button>
+                        </div>
+                    </div>
+
+                    <div class="row" id="data-content" style="display: none;">
+                        <div class="col-md-12">
+                            <div id="loading">
+                                <div class="spiner-example">
+                                    <div class="sk-spinner sk-spinner-wave">
+                                        <div class="sk-rect1"></div>
+                                        <div class="sk-rect2"></div>
+                                        <div class="sk-rect3"></div>
+                                        <div class="sk-rect4"></div>
+                                        <div class="sk-rect5"></div>
+                                    </div>
+                                </div> <br/>
+
+                                <div class="text-center" style="margin-top: -40px;">
+                                    Sedang mengambil data terbaru. Harap Tunggu ....
+                                </div>
+                            </div>
+                            
+                            <div id="result" style="display: none;">
+                                <div class="row">
+                                    <div class="alert alert-success">
+                                        <b>Proses pengambilan data selesai</b>. Berikut adalah data yang berhasil diambil.
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12" style="height: 400px; overflow-y: scroll; border-bottom: 1px solid #eee; padding: 0px;">
+                                        <table class="table table-bordered" style="font-size: 10pt;">
+                                            <thead>
+                                                <tr>
+                                                    <th width="25%" class="text-center" style="position: sticky; top: 0;">kode data</th>
+                                                    <th class="text-center" style="position: sticky; top: 0;">Nama</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="data-result"></tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="col-md-12 m-t text-right">
+                                        <button class="btn btn-success btn-sm" data-dismiss="modal">Ok</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php include 'pages/_partials/_script.php' ?>
 
     <!-- ChartJS-->
     <script src="js/plugins/chartJs/dist/chart.min.js"></script>
     <script src="js/plugins/chartJs/label/src/plugin.js"></script>
+    <script src="js/plugins/axios/dist/axios.min.js"></script>
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function() {  
 
             var lineConfig = {
                 type: 'line',
@@ -252,7 +329,6 @@
                 }
             };
 
-
             var lineChart = document.getElementById("lineChart").getContext("2d");
             var myLineChart = Chart.Line(lineChart, lineConfig);
 
@@ -266,6 +342,58 @@
                 var value = myPie.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
                 alert(label + ": " + value);
             });
+
+            $('#generate').click(function(evt){
+                evt.preventDefault();
+                
+                $('#data-content').fadeOut(0);
+                $('#result').fadeOut(0);
+                $('#button-content').fadeIn(200);
+                $('#loading').fadeIn(100);
+
+                $('#modalGenerate').modal({backdrop: 'static', keyboard: false})
+                $('#modalGenerate').modal('show');
+            });
+
+            $("#confirm-generate").click(function(){
+                $('#button-content').fadeOut(200);
+
+                setTimeout(function(alpha){
+                    $('#data-content').fadeIn(200);
+
+                    axios.get('curl.php')
+                            .then((resp) => {
+
+                                if(resp.data.status == 'berhasil'){
+                                    $('#loading').fadeOut(100);
+                                    
+                                    let dataHtml = "";
+                                    $.each(resp.data.data, function(index, data){
+                                        dataHtml += '<tr>'+
+                                                        '<td class="text-center">'+data.id_post+'</td>'+
+                                                        '<td>'+data.input+'</td>'+
+                                                    '</tr>';
+                                    });
+
+                                    if(!resp.data.data.length){
+                                        dataHtml += '<tr>'+
+                                                        '<td class="text-center text-muted" colspan="2"><small>Data sudah terupdate..</small></td>'+
+                                                    '</tr>';
+                                    }
+
+                                    setTimeout(function(ert){
+                                        $('#data-result').html(dataHtml)
+                                        $('#result').fadeIn(200);
+                                    }, 105)
+                                }else{
+                                    alert(resp.data.text);
+                                }
+                            }).catch((err) => {
+                                alert('terjadi kesalahan sistem '+err);
+                            })
+
+                }, 205)
+            })
 
         });
     </script>
