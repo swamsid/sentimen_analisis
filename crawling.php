@@ -148,8 +148,6 @@
 
                 var ctx = $(this);
 
-                // alert('aa');
-
                 $('#detail-wrap').html('<center><small>Sedang Mengambil Data</small></center>');
                 $('#modal-detail').modal('show');
                 $('#detail-wrap').load('pages/crawling/detail.php?id='+ctx.data('id')+'&ctx='+ctx.data('conteks'));

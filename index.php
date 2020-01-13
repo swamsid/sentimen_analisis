@@ -186,7 +186,7 @@
                                 </div> <br/>
 
                                 <div class="text-center" style="margin-top: -40px;">
-                                    Sedang mengambil data terbaru. Harap Tunggu ....
+                                    <span id="text-loading">Sedang mengambil data terbaru. Harap Tunggu ....</span>
                                 </div>
                             </div>
                             
@@ -212,11 +212,34 @@
                                     </div>
                                     
                                     <div class="col-md-12 m-t text-right">
-                                        <button class="btn btn-success btn-sm" data-dismiss="modal">Ok</button>
+                                        <button class="btn btn-success btn-sm" id="ekstrasi">mulai ekstrasi data</button>
                                     </div>
                                 </div>
 
                             </div>
+
+                            <div id="result2" style="display: none;">
+                                <div class="row">
+                                    <div class="alert alert-success">
+                                        <b>Proses ekstrasi data selesai</b>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12 text-center" style="height: 100px; overflow-y: scroll; border-bottom: 1px solid #eee; padding: 0px;">
+                                        <h1>Total <span id="counter">10</span> Data berhasil diekstrasi..</h1>
+                                    </div>
+                                    
+                                    <div class="col-md-12 m-t text-right">
+                                        <a href="crawling.php">
+                                            <button class="btn btn-success btn-sm">Lihat Data</button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            
                         </div>
                     </div>
                 </div>
@@ -346,6 +369,7 @@
             $('#generate').click(function(evt){
                 evt.preventDefault();
                 
+                $('#text-loading').html('Sedang mengambil data terbaru. Harap Tunggu ....');
                 $('#data-content').fadeOut(0);
                 $('#result').fadeOut(0);
                 $('#button-content').fadeIn(200);
@@ -392,6 +416,32 @@
                                 alert('terjadi kesalahan sistem '+err);
                             })
 
+                }, 205)
+            })
+
+            $('#ekstrasi').click(function(){
+                $('#result').fadeOut(100);
+                $('#text-loading').html('Sedang melakukan ekstrasi. Harap Tunggu ....')
+                setTimeout(function(){
+                    $('#loading').fadeIn(200);
+                    axios.get('ekstrasi.php')
+                            .then((resp) => {
+
+                                // console.log(resp);
+
+                                if(resp.data.status == 'berhasil'){
+                                    $('#loading').fadeOut(100);
+
+                                    setTimeout(function(ert){
+                                        $('#counter').html(resp.data.counter)
+                                        $('#result2').fadeIn(200);
+                                    }, 150)
+                                }else{
+                                    alert(resp.data.text);
+                                }
+                            }).catch((err) => {
+                                alert('terjadi kesalahan sistem '+err);
+                            })
                 }, 205)
             })
 
