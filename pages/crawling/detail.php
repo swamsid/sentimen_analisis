@@ -12,6 +12,8 @@
     $tokenize = tokenize(strtolower($row['dc_inputan']));
     $stopword = tokenize(stopword(strtolower($row['dc_inputan'])));
     $stemmer = tokenize(stopword(stemmer($row['dc_inputan'])));
+
+    // var_dump($tokenize);
 ?>
 
 

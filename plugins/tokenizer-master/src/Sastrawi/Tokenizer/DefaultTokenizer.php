@@ -85,8 +85,9 @@ class DefaultTokenizer implements TokenizerInterface
 
             if ($this->isCharEntity($i, $entities)) {
                 // don't split entity
-                $tokenBuffer .= $model->getCurrentChar();
+                    $tokenBuffer .= $model->getCurrentChar();
             } elseif ($analyzerResultTrue > 0 && $analyzerResultTrue >= $analyzerResultFalse) {
+                // echo $tokenBuffer;
                 if ($model->getCurrentChar() !== ' ') {
                     if (!empty($tokenBuffer)) {
                         $tokens[] = $tokenBuffer;
@@ -103,6 +104,7 @@ class DefaultTokenizer implements TokenizerInterface
             } else {
                 $tokenBuffer .= $model->getCurrentChar();
             }
+
         }
 
         if (!empty($tokenBuffer)) {
@@ -122,4 +124,5 @@ class DefaultTokenizer implements TokenizerInterface
 
         return false;
     }
+    
 }
