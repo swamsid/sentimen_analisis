@@ -10,7 +10,8 @@ function tokenize(String $str){
 	$result = [];
 
 	foreach($tokens as $id => $token){
-		if(!checkValidity($token)){
+		// echo ctype_punct('...') ? 'yaa' : 'bkan';
+		if(!checkValidity($token) && !ctype_punct($token)){
 			array_push($result, $token);
 		}
 	}

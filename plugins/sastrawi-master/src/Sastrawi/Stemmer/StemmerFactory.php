@@ -23,10 +23,12 @@ class StemmerFactory
     public function createStemmer($isDev = false)
     {
         $stemmer    = new Stemmer($this->createDefaultDictionary($isDev));
+        $arrayWord = $this->getWordsFromFile(false);
 
         $resultCache   = new Cache\ArrayCache();
-        $cachedStemmer = new CachedStemmer($resultCache, $stemmer);
+        $cachedStemmer = new CachedStemmer($resultCache, $stemmer, $arrayWord);
 
+        // echo json_encode($arrayWord[0]);
         return $cachedStemmer;
     }
 
@@ -57,13 +59,16 @@ class StemmerFactory
         return $words;
     }
 
-    protected function getWordsFromFile()
+    protected function getWordsFromFile($needle = true)
     {
         $dictionaryFile = __DIR__ . '/../../../data/kata-dasar.txt';
         if (!is_readable($dictionaryFile)) {
             throw new \Exception('Dictionary file is missing. It seems that your installation is corrupted.');
         }
 
-        return explode("\n", file_get_contents($dictionaryFile));
+        if($needle)
+            return explode("\n", file_get_contents($dictionaryFile));
+        else
+            return explode(PHP_EOL, file_get_contents($dictionaryFile));
     }
 }

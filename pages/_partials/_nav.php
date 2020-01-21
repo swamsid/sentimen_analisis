@@ -54,7 +54,9 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <!-- <a href="#">Dashboard</a> -->
+                    <a href="logout.php">
+                        <i class="fa fa-sign-out text-danger"></i> Log out
+                    </a>
                 </li>
             </ul>
         </div>

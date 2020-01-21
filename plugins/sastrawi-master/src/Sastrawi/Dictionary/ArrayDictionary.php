@@ -21,6 +21,7 @@ class ArrayDictionary implements DictionaryInterface
     public function __construct(array $words = array())
     {
         $this->addWords($words);
+        // echo json_encode($words);
     }
 
     /**

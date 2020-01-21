@@ -11,13 +11,16 @@ namespace Sastrawi\Stemmer;
 class CachedStemmer implements StemmerInterface
 {
     protected $cache;
-
+    protected $arrayBucket;
     protected $delegatedStemmer;
 
-    public function __construct(Cache\CacheInterface $cache, StemmerInterface $delegatedStemmer)
+    public function __construct(Cache\CacheInterface $cache, StemmerInterface $delegatedStemmer, Array $arrayBucket)
     {
         $this->cache = $cache;
         $this->delegatedStemmer = $delegatedStemmer;
+        $this->arrayBucket = $arrayBucket;
+
+        // echo json_encode($arrayBucket);
     }
 
     public function stem($text)
@@ -28,15 +31,22 @@ class CachedStemmer implements StemmerInterface
         $stems = array();
 
         foreach ($words as $word) {
+            // var_dump($this->cache);
+
+            // echo $word;
             if ($this->cache->has($word)) {
+                // echo "a<br>";
                 $stems[] = $this->cache->get($word);
             } else {
-                $stem = $this->delegatedStemmer->stem($word);
-                $this->cache->set($word, $stem);
-                $stems[] = $stem;
+                if(in_array($word, $this->arrayBucket)){
+                    $stem = $this->delegatedStemmer->stem($word);
+                    $this->cache->set($word, $stem);
+                    $stems[] = $stem;
+                }
             }
         }
 
+        // echo json_encode($stems);
         return implode(' ', $stems);
     }
 
