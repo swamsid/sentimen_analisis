@@ -39,7 +39,7 @@
                                     <!-- <span class="label label-warning pull-right">Total 1 Data</span> -->
                                     <h5>Data Klasifikasi Yang Sudah Terproses</h5>
                                     <div class="ibox-tools">
-                                        <button class="btn btn-success btn-sm">Lakukan Perhitungan Data</button>
+                                        <a href="hitung.php" class="btn btn-success btn-sm" style="color: white;">Lakukan Perhitungan Data</a>
                                     </div>
                                 </div>
                                 <div class="ibox-content">

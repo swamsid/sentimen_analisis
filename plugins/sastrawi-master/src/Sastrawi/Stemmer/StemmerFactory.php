@@ -61,7 +61,7 @@ class StemmerFactory
 
     protected function getWordsFromFile($needle = true)
     {
-        $dictionaryFile = __DIR__ . '/../../../data/kata-dasar.txt';
+        $dictionaryFile = __DIR__ . '/../../../data/kamus-liu.txt';
         if (!is_readable($dictionaryFile)) {
             throw new \Exception('Dictionary file is missing. It seems that your installation is corrupted.');
         }
