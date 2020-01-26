@@ -5,7 +5,7 @@
     include '../../plugins/sastrawi-master/stopword.php';
     include '../../plugins/sastrawi-master/stemmer.php';
 
-    $sql = "SELECT * FROM data_crawling where dc_id = ".$_GET['id'];
+    $sql = "SELECT * FROM klasifikasi join data_crawling on dc_id = k_data where k_data = ".$_GET['id'];
     $result = $con->query($sql) or die (mysqli_error($con));
     $row = $result->fetch_assoc();
 
@@ -44,7 +44,7 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <span> Nilai Positif </span>
-                            <h2 class="font-bold">0.929999</h2>
+                            <h2 class="font-bold"><?= (is_null($row['k_positif'])) ? 'null' : number_format($row['k_positif'], 4) ?></h2>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <span> Nilai Negatif </span>
-                            <h2 class="font-bold">1.23267</h2>
+                            <h2 class="font-bold"><?= (is_null($row['k_negatif'])) ? 'null' : number_format($row['k_negatif'], 4) ?></h2>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <span> Hasil Akhir </span>
-                            <h2 class="font-bold">Negatif</h2>
+                            <h2 class="font-bold"><?= ($row['k_positif'] > $row['k_negatif']) ? 'Positif' : 'Negatif' ?></h2>
                         </div>
                     </div>
                 </div>

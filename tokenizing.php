@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include 'lib/connection.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +31,7 @@
                         <div class="col-md-12" style="padding: 0px;">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <span class="label label-warning pull-right">Total Data 1</span>
+                                
                                     <h5>Data Testing Hasil Tokenizing</h5>
                                 </div>
                                 <div class="ibox-content">
@@ -34,66 +39,35 @@
                                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Kode</th>
-                                                    <th class="text-center">Hasil Tokenizing</th>
-                                                    <th class="text-center">Aksi</th>
+                                                <th width="5%" class="text-center">No</th>
+                                                    <th width="10%" class="text-center">Kode</th>
+                                                    <th width="70%" class="text-center">Hasil Tokenizing</th>
+                                                    <th width="15%" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr class="gradeX">
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">TXT-01120</td>
-                                                    <td>
-                                                        terima | kasih | mmg | di | modem | kami | ada | restat | cepat | sekali | tanggapannya | mksh | banyak | kami | akan | coba | dl | useetv | kami
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="1" data-conteks="testing">
-                                                            <i class="fa fa-folder-open"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                            <?php
+                                                $sql = "SELECT * FROM tokenize join case_folding on cf_data = t_data join data_crawling on dc_id = cf_data";
+                                                $result = $con->query($sql) or die (mysqli_error($con));
+                                                $idx = 1;
 
-                    <div class="row">
-                        <div class="col-md-12" style="padding: 0px;">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <span class="label label-warning pull-right">Data has changed</span>
-                                    <h5>Data Testing Hasil Tokenizing</h5>
-                                </div>
-                                <div class="ibox-content">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover dataTables-example" >
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">No</th>
-                                                    <th class="text-center">Kode</th>
-                                                    <th class="text-center">Hasil Tokenizing</th>
-                                                    <th class="text-center">Aksi</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr class="gradeX">
-                                                    <td class="text-center">1</td>
-                                                    <td class="text-center">TXT-01120</td>
-                                                    <td>
-                                                        terima | kasih | mmg | di | modem | kami | ada | restat | cepat | sekali | tanggapannya | mksh | banyak | kami | akan | coba | dl | useetv | kami
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-xs btn-primary btn-detail" data-id="1" data-conteks="training">
-                                                            <i class="fa fa-folder-open"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                while($row = $result->fetch_assoc()){
+                                            ?>
+                                                    <tr class="gradeX">
+                                                        <td class="text-center"><?= $idx ?></td>
+                                                        <td class="text-center"><?= $row['dc_post_id'] ?></td>
+                                                        <td class="text-left"><?= str_replace('|', ' | ', $row['t_tokenize']) ?></td>
+                                                        <td class="text-center">
+                                                            <button class="btn btn-xs btn-primary btn-detail" data-id="<?= $row['dc_id'] ?>">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                            <?php
+                                                    $idx++;
+                                                };
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>

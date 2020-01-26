@@ -4,6 +4,12 @@
 
     if(!isset($_SESSION['login']))
         echo '<script> window.location = "login.php" </script>';
+
+    $sql = "SELECT (SELECT COUNT(*) FROM klasifikasi WHERE k_hasil = 'positif') AS positif, (SELECT COUNT(*) FROM klasifikasi WHERE k_hasil = 'negatif') AS negatif";
+    $result = $con->query($sql) or die (mysqli_error($con));
+    $pie = $result->fetch_array();
+
+    $total = $pie['positif'] + $pie['negatif'];
 ?>
 
 <!DOCTYPE html>
@@ -45,12 +51,12 @@
                                     <div class="ibox-content">
                                         <div>
                                             <span class="pull-right text-right">
-                                                All sales: 162,862
+                                                <!-- All sales: 162,862 -->
                                             </span>
                                             <h3 class="font-bold no-margins">
                                                Status Sentimen Positif / Negatif.
                                             </h3>
-                                            <small>&nbsp;Berdasarkan Total 4920 Data</small>
+                                            <small>&nbsp;Berdasarkan Total <?= $total ?> Data</small>
                                         </div>
 
                                         <div class="m-t-sm">
@@ -62,17 +68,17 @@
                                                 <div class="col-md-6" style="background: none;">
                                                     <ul class="stat-list">
                                                         <li>
-                                                            <h2 class="no-margins">2,346</h2>
-                                                            <small>Total orders in period</small>
+                                                            <h2 class="no-margins"><?= $pie['positif'] ?></h2>
+                                                            <small>Total Data Positif</small>
                                                             <div class="progress progress-mini">
-                                                                <div class="progress-bar" style="width: 48%;"></div>
+                                                                <div class="progress-bar" style="width: <?= ($pie['positif'] / $total) * 100 ?>%;"></div>
                                                             </div>
                                                         </li>
                                                         <li>
-                                                            <h2 class="no-margins ">4,422</h2>
-                                                            <small>Orders in last month</small>
+                                                            <h2 class="no-margins "><?= $pie['negatif'] ?></h2>
+                                                            <small>Total Data Negatif</small>
                                                             <div class="progress progress-mini">
-                                                                <div class="progress-bar" style="width: 60%;"></div>
+                                                                <div class="progress-bar" style="width: <?= ($pie['negatif'] / $total) * 100 ?>%;"></div>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -83,7 +89,8 @@
 
                                         <div class="m-t-md">
                                             <small>
-                                                <strong>Kesimpulan Analisa:</strong> The value has been changed over time, and last month reached a level over $50,000.
+                                                <strong>Kesimpulan Analisa:</strong> 
+                                                <?= ($pie['positif'] > $pie['negatif']) ? 'Penilaian pelanggan terhadap perusahaan rata-rata positif. Perusahaan harus mempertahankan atau meningkatkan agar lebih baik.' : 'Penilaian pelanggan terhadap perusahaan rata-rata negatif. Perusahaan perlu memperhatikan kinerjanya lebih teliti agar menjadi lebih baik.' ?>
                                             </small>
                                         </div>
 
@@ -111,8 +118,8 @@
                         <div class="col-lg-7">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <span class="label label-warning pull-right">Data has changed</span>
-                                    <h5>Trend Total Data Perbulan</h5>
+                                    <!-- <span class="label label-warning pull-right">Data has changed</span> -->
+                                    <h5>Trend Total Data per 6 Bulan Terakhir</h5>
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
@@ -254,6 +261,21 @@
     <script src="js/plugins/chartJs/label/src/plugin.js"></script>
     <script src="js/plugins/axios/dist/axios.min.js"></script>
 
+    <?php
+        $bulanSekarang = date('Y-m').'-01';
+        $bulanLalu = date('Y-m-d', strtotime('-5 month', strtotime($bulanSekarang)));
+        $bulan = $data = [];
+
+        while(strtotime($bulanSekarang) >= strtotime($bulanLalu)){
+            $sql = "SELECT count(*) from data_crawling where DATE_FORMAT(created_at, '%m/%Y') = '".date('m/Y', strtotime($bulanLalu))."'";
+            $result = $con->query($sql) or die (mysqli_error($con));
+            $line = $result->fetch_array();
+            array_push($data, $line[0]);
+            array_push($bulan, date('m/Y', strtotime($bulanLalu)));
+
+            $bulanLalu = date('Y-m-d', strtotime('+1 month', strtotime($bulanLalu)));
+        }
+    ?>
 
     <script>
         $(document).ready(function() {  
@@ -261,13 +283,13 @@
             var lineConfig = {
                 type: 'line',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                    labels: ['<?= $bulan[0] ?>', '<?= $bulan[1] ?>', '<?= $bulan[2] ?>', '<?= $bulan[3] ?>', '<?= $bulan[4] ?>', '<?= $bulan[5] ?>'],
                     datasets: [{
                         label: 'Unfilled',
                         fill: true,
                         backgroundColor: 'rgba(10, 9, 200, 0.3)',
                         borderColor: '#0099CC',
-                        data: [51, 42, 46, 65, 71, 81],
+                        data: [<?= $data[0] ?>, <?= $data[1] ?>, <?= $data[2] ?>, <?= $data[3] ?>, <?= $data[4] ?>, <?= $data[5] ?>],
                     }]
                 },
                 options: {
@@ -315,7 +337,7 @@
                 type: 'pie',
                 data: {
                     datasets: [{
-                        data: [80, 70],
+                        data: [<?= $pie['positif'] ?>, <?= $pie['negatif'] ?>],
                         backgroundColor: [
                             '#00C851', '#ff4444'
                         ],

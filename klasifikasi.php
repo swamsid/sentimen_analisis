@@ -29,9 +29,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 no-padding">
-                            <div class="alert alert-info">
+                            <!-- <div class="alert alert-info">
                                 Terdapat 5 data ekstrasi yang belum dilakukan perhitungan. <a class="alert-link" href="#">lakukan perhitungan sekarang !</a>.
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-md-12" style="padding: 0px;">
                             <div class="ibox float-e-margins">
