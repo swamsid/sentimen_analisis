@@ -41,114 +41,103 @@
 
             $data = []; $loop = 0;
 
-            // foreach ($spaner as $key => $dd) {
-            //     // print_r($dd);
-            //     if($dd->tagName == 'article'){
-            //         $child = $spaner2->item($loop);
-            //         $input = $tanggal = $auth = "Tidak Ada"; $links = "mediakonsumen.com";
+            foreach ($spaner as $key => $dd) {
+                // print_r($dd);
+                if($dd->tagName == 'article'){
+                    $child = $spaner2->item($loop);
+                    $input = $tanggal = $auth = "Tidak Ada"; $links = "mediakonsumen.com";
 
-            //         $link =  $child->getElementsByTagName('h2');
-            //         $tgl =  $child->getElementsByTagName('time');
-            //         $author =  $child->getElementsByTagName('span');
+                    $link =  $child->getElementsByTagName('h2');
+                    $tgl =  $child->getElementsByTagName('time');
+                    $author =  $child->getElementsByTagName('span');
 
-            //         if($link->item(0)){
-            //             // print_r($author->item());
+                    if($link->item(0)){
+                        // print_r($author->item());
 
-            //             $input = $link->item(0)->nodeValue;
+                        $input = $link->item(0)->nodeValue;
 
-            //             if($tgl->item(0)){
-            //                 $tgl = $tgl->item(0)->nodeValue;
-            //             }
-            //             if($author->item(1)){
-            //                 $auth = $author->item(2)->nodeValue;
-            //             }
+                        if($tgl->item(0)){
+                            $tgl = $tgl->item(0)->nodeValue;
+                        }
+                        if($author->item(1)){
+                            $auth = $author->item(2)->nodeValue;
+                        }
 
-            //             array_push($data, [
-            //                 'input'     => mysqli_real_escape_string($con, trim($input)),
-            //                 'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl)),
-            //                 'author'    => mysqli_real_escape_string($con, $auth),
-            //                 'link'      => mysqli_real_escape_string($con, $links),
-            //                 'sumber'    => mysqli_real_escape_string($con, 'mediakonsumen.com'),
-            //                 'id_post'   => 'Mk'.$dd->attributes[0]->nodeValue
-            //             ]);
-            //         }
+                        array_push($data, [
+                            'input'     => mysqli_real_escape_string($con, trim($input)),
+                            'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl)),
+                            'author'    => mysqli_real_escape_string($con, $auth),
+                            'link'      => mysqli_real_escape_string($con, $links),
+                            'sumber'    => mysqli_real_escape_string($con, 'mediakonsumen.com'),
+                            'id_post'   => 'Mk'.$dd->attributes[0]->nodeValue
+                        ]);
+                    }
 
-            //         $loop++;
-            //     }
+                    $loop++;
+                }
                 
-            // }
+            }
             
 
-        // curl Twitter
-            $html = get_html('https://twitter.com/search?f=live&q=indihome%20since%3A2019-01-01%20until%3A2019-05-31&src=typed_query');
-            $dom = new DomDocument();
 
-            // echo $html;
+        // // curl Twitter
+        //     $html = get_html('https://twitter.com/search?f=live&q=indihome%20since%3A2019-01-01%20until%3A2019-05-31&src=typed_query');
+        //     $dom = new DomDocument();
 
-            @$dom->loadHTML($html);
+        //     // echo $html;
 
-            $classname="js-stream-item";
-            $finder = new DomXPath($dom);
-            $spaner = $finder->query("//*[contains(@class, '$classname')]");
+        //     @$dom->loadHTML($html);
 
-            $spaner2 = $finder->query("//*[contains(@class, 'stream-item-header')]");
-            $span = $spaner->item(0);
-            $authors = $tgl = []; $loop = 0;
+        //     $classname="stream-item-header";
+        //     $finder = new DomXPath($dom);
+        //     $spaner = $finder->query("//*[contains(@class, '$classname')]");
+        //     $span = $spaner->item(0);
 
-            print_r($span);
+        //     $authors = $tgl = [];
 
-            foreach ($spaner as $key => $dd) {
-                $child = $spaner2->item(20);
+        //     foreach ($spaner as $key => $dd) {
 
-                // print_r($dd);
+        //         $author = $dd->getElementsByTagName('b');
+        //         $tgls = $dd->getElementsByTagName('span');
 
-                // $author = $child->getElementsByTagName('b');
-                // $tgls = $child->getElementsByTagName('span');
+        //         if($author->item(0)){
+        //             array_push($authors, '@'.$author->item(0)->nodeValue);
+        //         }
 
-                // // print_r($tgls->item(0));
-
-                // if($author->item(0)){
-                //     array_push($authors, '@'.$author->item(0)->nodeValue);
-                // }
-
-                // if($tgls->item(5)){
-                //     array_push($tgl, $tgls->item(5)->nodeValue);
-                // }
+        //         if($tgls->item(5)){
+        //             array_push($tgl, $tgls->item(5)->nodeValue);
+        //         }
                 
-                $loop++;
-            }
 
-            // echo $loop;
+        //     }
 
-            $classname="js-tweet-text-container";
-            $finder = new DomXPath($dom);
-            $spaner = $finder->query("//*[contains(@class, '$classname')]");
-            $span = $spaner->item(0);
+        //     $classname="js-tweet-text-container";
+        //     $finder = new DomXPath($dom);
+        //     $spaner = $finder->query("//*[contains(@class, '$classname')]");
+        //     $span = $spaner->item(0);
 
-            $inputans = [];
+        //     $inputans = [];
 
-            foreach ($spaner as $key => $dd) {
+        //     foreach ($spaner as $key => $dd) {
 
-                $inputan = $dd->getElementsByTagName('p');
+        //         $inputan = $dd->getElementsByTagName('p');
 
-                if($inputan->item(0)){
-                    array_push($inputans, $inputan->item(0)->nodeValue);
-                }
+        //         if($inputan->item(0)){
+        //             array_push($inputans, $inputan->item(0)->nodeValue);
+        //         }
 
-            }
+        //     }
 
-            foreach ($inputans as $key => $value) {
-                // array_push($data, [
-                //     'input'     => mysqli_real_escape_string($con, trim($value)),
-                //     'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl[$key])),
-                //     'author'    => mysqli_real_escape_string($con, $authors[$key]),
-                //     'link'      => mysqli_real_escape_string($con, 'twitter.com'),
-                //     'sumber'    => mysqli_real_escape_string($con, 'twitter.com'),
-                //     'id_post'   => 'Tw'.$dd->attributes[1]->nodeValue
-                // ]);
-            }
-
-        // echo json_encode($data);
+        //     foreach ($inputans as $key => $value) {
+        //         array_push($data, [
+        //             'input'     => mysqli_real_escape_string($con, trim($value)),
+        //             'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl[$key])),
+        //             'author'    => mysqli_real_escape_string($con, $authors[$key]),
+        //             'link'      => mysqli_real_escape_string($con, 'twitter.com'),
+        //             'sumber'    => mysqli_real_escape_string($con, 'twitter.com'),
+        //             'id_post'   => 'Tw'
+        //         ]);
+        //     }
         
         $queryCek = "select * from data_crawling";
         $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
@@ -174,11 +163,11 @@
         if($trigered)
             $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
         
-        // echo json_encode([
-        //     'status'    => 'berhasil',
-        //     'text'      => 'Data Berhasil Diambil',
-        //     'data'      => $dataReturned
-        // ]);
+        echo json_encode([
+            'status'    => 'berhasil',
+            'text'      => 'Data Berhasil Diambil',
+            'data'      => $dataReturned
+        ]);
 
         return true;
 
