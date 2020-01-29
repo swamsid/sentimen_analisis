@@ -18,6 +18,7 @@
                 if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
                     array_push($words, $glue);
                 }
+                
 
                 if($training['k_hasil'] == 'positif'){
                     if(!array_key_exists($glue, $pPositif)){
