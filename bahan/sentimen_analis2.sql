@@ -13,7 +13,6 @@
 
 
 -- Dumping database structure for sentimen
-DROP DATABASE IF EXISTS `sentimen`;
 CREATE DATABASE IF NOT EXISTS `sentimen` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `sentimen`;
 
@@ -30,16 +29,12 @@ CREATE TABLE IF NOT EXISTS `case_folding` (
 -- Dumping data for table sentimen.case_folding: ~5 rows (approximately)
 /*!40000 ALTER TABLE `case_folding` DISABLE KEYS */;
 REPLACE INTO `case_folding` (`cf_data`, `cf_case_folding`, `created_at`) VALUES
-	(83, 'dua kali gagal pasang indihome karena odp penuh walau sudah ajak tetangga', '2020-01-28 23:20:57'),
-	(84, 'kecewa dengan pelayanan indihome', '2020-01-28 23:20:58'),
-	(85, 'pemasangan indihome terkendala karena data odp pusat dan daerah berbeda', '2020-01-28 23:20:58'),
-	(86, 'surat terbuka untuk telkom indihome', '2020-01-28 23:20:58'),
-	(87, 'pemasangan sambungan baru indihome mengecewakan, janji 7×24 jam akan diproses tidak dipenuhi', '2020-01-28 23:20:58'),
-	(93, 'apakah tagihan telkom indihome untuk bulan yang diblokir harus dibayar?', '2020-01-28 23:26:33'),
-	(94, 'pemasangan indihome tidak jelas waktunya', '2020-01-28 23:26:33'),
-	(95, 'aturan penagihan indihome yang sepihak', '2020-01-28 23:26:34'),
-	(96, 'pemasangan layanan indihome terhalang odp penuh', '2020-01-28 23:26:34'),
-	(97, 'tagihan “siluman” indihome', '2020-01-28 23:26:34');
+	(1, 'terima kasih, mmg di modem kami ada restat... cepat sekali tanggapannya.. mksh banyak... kami akan coba dl useetv kami ...', '2020-01-22 15:20:27'),
+	(2, 'acuh tidak baik buruk', '2020-01-22 15:20:27'),
+	(3, 'astaghfirullah buruk kurang cepat', '2020-01-22 15:20:27'),
+	(4, 'alhamdulillah lancar terima kasih', '2020-01-22 15:20:27'),
+	(5, 'murah banyak bonus puas', '2020-01-22 15:20:28'),
+	(6, 'terima kasih cepat banyak', '2020-01-23 07:47:45');
 /*!40000 ALTER TABLE `case_folding` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.data_crawling
@@ -54,21 +49,17 @@ CREATE TABLE IF NOT EXISTS `data_crawling` (
   `dc_inputan` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`dc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.data_crawling: ~5 rows (approximately)
+-- Dumping data for table sentimen.data_crawling: ~6 rows (approximately)
 /*!40000 ALTER TABLE `data_crawling` DISABLE KEYS */;
 REPLACE INTO `data_crawling` (`dc_id`, `dc_post_id`, `dc_author`, `dc_tanggal`, `dc_link`, `dc_sumber`, `dc_inputan`, `created_at`) VALUES
-	(83, 'Mkpost-60587', 'M.Sharon.', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Dua Kali Gagal Pasang IndiHome karena ODP Penuh walau Sudah Ajak Tetangga', '2020-01-28 17:20:22'),
-	(84, 'Mkpost-60494', 'Hisabul Umam', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Kecewa dengan Pelayanan Indihome', '2020-01-28 17:20:22'),
-	(85, 'Mkpost-60317', 'Alek', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Pemasangan IndiHome Terkendala karena Data ODP Pusat dan Daerah Berbeda', '2020-01-28 17:20:22'),
-	(86, 'Mkpost-59806', 'Donny Pradana', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Surat Terbuka untuk Telkom Indihome', '2020-01-28 17:20:22'),
-	(87, 'Mkpost-60048', 'ilham', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Pemasangan Sambungan Baru IndiHome Mengecewakan, Janji 7×24 Jam Akan Diproses Tidak Dipenuhi', '2020-01-28 17:20:22'),
-	(93, 'Mkpost-59792', 'machfudz', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Apakah Tagihan Telkom IndiHome untuk Bulan yang Diblokir Harus Dibayar?', '2020-01-28 17:26:31'),
-	(94, 'Mkpost-59718', 'Agus', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Pemasangan Indihome Tidak Jelas Waktunya', '2020-01-28 17:26:31'),
-	(95, 'Mkpost-59542', 'Wahyu', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Aturan Penagihan IndiHome yang Sepihak', '2020-01-28 17:26:31'),
-	(96, 'Mkpost-59163', 'Ronald Akhirudin', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Pemasangan Layanan IndiHome Terhalang ODP Penuh', '2020-01-28 17:26:31'),
-	(97, 'Mkpost-59136', 'Asna Tulusi', '0000-00-00', 'mediakonsumen.com', 'mediakonsumen.com', 'Tagihan “Siluman” IndiHome', '2020-01-28 17:26:31');
+	(1, 'locked', 'locked', '2020-01-01', 'locked', 'locked', 'terima kasih, mmg di modem kami ada restat... cepat sekali tanggapannya.. mksh banyak... kami akan coba dl useetv kami ...', '2020-01-26 15:48:29'),
+	(2, 'locked', 'locked', '0000-00-00', 'locked', 'locked', 'Acuh tidak baik buruk', '2020-01-22 13:45:57'),
+	(3, 'locked', 'locked', '0000-00-00', 'locked', 'locked', 'Astaghfirullah buruk kurang cepat', '2020-01-22 13:46:22'),
+	(4, 'locked', 'locked', '0000-00-00', 'locked', 'locked', 'Alhamdulillah lancar terima kasih', '2020-01-22 13:46:46'),
+	(5, 'locked', 'locked', '0000-00-00', 'locked', 'locked', 'Murah banyak bonus puas', '2020-01-22 13:47:10'),
+	(6, 'locked', 'locked', '0000-00-00', 'lcoked', 'locked', 'Terima kasih cepat banyak', '2020-01-26 15:47:30');
 /*!40000 ALTER TABLE `data_crawling` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.kamus_liu
@@ -3687,11 +3678,12 @@ CREATE TABLE IF NOT EXISTS `klasifikasi` (
 -- Dumping data for table sentimen.klasifikasi: ~5 rows (approximately)
 /*!40000 ALTER TABLE `klasifikasi` DISABLE KEYS */;
 REPLACE INTO `klasifikasi` (`k_stemmer`, `k_data`, `k_positif`, `k_negatif`, `k_hasil`, `created_at`) VALUES
-	(83, 83, NULL, NULL, 'negatif', '2020-01-28 23:40:19'),
-	(84, 84, NULL, NULL, 'negatif', '2020-01-28 23:40:22'),
-	(85, 85, NULL, NULL, 'negatif', '2020-01-28 23:40:25'),
-	(86, 86, NULL, NULL, NULL, '2020-01-28 23:40:29'),
-	(87, 86, NULL, NULL, 'negatif', '2020-01-28 23:40:32');
+	(1, 1, NULL, NULL, 'positif', '2020-01-22 15:20:50'),
+	(2, 2, NULL, NULL, 'negatif', '2020-01-22 15:21:00'),
+	(3, 3, NULL, NULL, 'negatif', '2020-01-22 15:21:08'),
+	(4, 4, NULL, NULL, 'positif', '2020-01-22 15:21:15'),
+	(5, 5, NULL, NULL, 'positif', '2020-01-22 15:21:21'),
+	(6, 6, 0.93333333333333, 0.4, 'positif', '2020-01-23 14:32:04');
 /*!40000 ALTER TABLE `klasifikasi` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.stemmer
@@ -3707,16 +3699,12 @@ CREATE TABLE IF NOT EXISTS `stemmer` (
 -- Dumping data for table sentimen.stemmer: ~5 rows (approximately)
 /*!40000 ALTER TABLE `stemmer` DISABLE KEYS */;
 REPLACE INTO `stemmer` (`s_data`, `s_stemmer`, `created_at`) VALUES
-	(83, 'gagal|penuh', '2020-01-28 23:20:57'),
-	(84, 'kecewa', '2020-01-28 23:20:58'),
-	(85, 'berbeda', '2020-01-28 23:20:58'),
-	(86, '', '2020-01-28 23:20:58'),
-	(87, 'mengecewakan|janji|tidak', '2020-01-28 23:20:59'),
-	(93, '', '2020-01-28 23:26:33'),
-	(94, 'tidak|jelas', '2020-01-28 23:26:34'),
-	(95, '', '2020-01-28 23:26:34'),
-	(96, 'terhalang|penuh', '2020-01-28 23:26:34'),
-	(97, '', '2020-01-28 23:26:34');
+	(1, 'terima|cepat|banyak', '2020-01-22 15:20:27'),
+	(2, 'acuh|tidak|baik|buruk', '2020-01-22 15:20:27'),
+	(3, 'astaghfirullah|buruk|kurang|cepat', '2020-01-22 15:20:27'),
+	(4, 'alhamdulillah|lancar|terima', '2020-01-22 15:20:27'),
+	(5, 'murah|banyak|bonus|puas', '2020-01-22 15:20:28'),
+	(6, 'terima|cepat|banyak', '2020-01-23 07:47:46');
 /*!40000 ALTER TABLE `stemmer` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.stopword
@@ -3732,16 +3720,12 @@ CREATE TABLE IF NOT EXISTS `stopword` (
 -- Dumping data for table sentimen.stopword: ~5 rows (approximately)
 /*!40000 ALTER TABLE `stopword` DISABLE KEYS */;
 REPLACE INTO `stopword` (`s_data`, `s_stopword`, `created_at`) VALUES
-	(83, 'dua|kali|gagal|pasang|indihome|odp|penuh|walau|sudah|ajak|tetangga', '2020-01-28 23:20:57'),
-	(84, 'kecewa|pelayanan|indihome', '2020-01-28 23:20:58'),
-	(85, 'pemasangan|indihome|terkendala|data|odp|pusat|daerah|berbeda', '2020-01-28 23:20:58'),
-	(86, 'surat|terbuka|telkom|indihome', '2020-01-28 23:20:58'),
-	(87, 'pemasangan|sambungan|baru|indihome|mengecewakan|janji|7×|24|jam|diproses|tidak|dipenuhi', '2020-01-28 23:20:59'),
-	(93, 'apakah|tagihan|telkom|indihome|bulan|diblokir|harus|dibayar', '2020-01-28 23:26:33'),
-	(94, 'pemasangan|indihome|tidak|jelas|waktunya', '2020-01-28 23:26:33'),
-	(95, 'aturan|penagihan|indihome|sepihak', '2020-01-28 23:26:34'),
-	(96, 'pemasangan|layanan|indihome|terhalang|odp|penuh', '2020-01-28 23:26:34'),
-	(97, 'tagihan|“|siluman”|indihome', '2020-01-28 23:26:34');
+	(1, 'terima|kasih|mmg|modem|ada|restat|cepat|sekali|tanggapannya|mksh|banyak|coba|dl|useetv', '2020-01-22 15:20:27'),
+	(2, 'acuh|tidak|baik|buruk', '2020-01-22 15:20:27'),
+	(3, 'astaghfirullah|buruk|kurang|cepat', '2020-01-22 15:20:27'),
+	(4, 'alhamdulillah|lancar|terima|kasih', '2020-01-22 15:20:27'),
+	(5, 'murah|banyak|bonus|puas', '2020-01-22 15:20:28'),
+	(6, 'terima|kasih|cepat|banyak', '2020-01-23 07:47:46');
 /*!40000 ALTER TABLE `stopword` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.tokenize
@@ -3757,16 +3741,12 @@ CREATE TABLE IF NOT EXISTS `tokenize` (
 -- Dumping data for table sentimen.tokenize: ~5 rows (approximately)
 /*!40000 ALTER TABLE `tokenize` DISABLE KEYS */;
 REPLACE INTO `tokenize` (`t_data`, `t_tokenize`, `created_at`) VALUES
-	(83, 'dua|kali|gagal|pasang|indihome|karena|odp|penuh|walau|sudah|ajak|tetangga', '2020-01-28 23:20:57'),
-	(84, 'kecewa|dengan|pelayanan|indihome', '2020-01-28 23:20:58'),
-	(85, 'pemasangan|indihome|terkendala|karena|data|odp|pusat|dan|daerah|berbeda', '2020-01-28 23:20:58'),
-	(86, 'surat|terbuka|untuk|telkom|indihome', '2020-01-28 23:20:58'),
-	(87, 'pemasangan|sambungan|baru|indihome|mengecewakan|janji|7×|24|jam|akan|diproses|tidak|dipenuhi', '2020-01-28 23:20:59'),
-	(93, 'apakah|tagihan|telkom|indihome|untuk|bulan|yang|diblokir|harus|dibayar', '2020-01-28 23:26:33'),
-	(94, 'pemasangan|indihome|tidak|jelas|waktunya', '2020-01-28 23:26:33'),
-	(95, 'aturan|penagihan|indihome|yang|sepihak', '2020-01-28 23:26:34'),
-	(96, 'pemasangan|layanan|indihome|terhalang|odp|penuh', '2020-01-28 23:26:34'),
-	(97, 'tagihan|“|siluman”|indihome', '2020-01-28 23:26:34');
+	(1, 'terima|kasih|mmg|di|modem|kami|ada|restat|cepat|sekali|tanggapannya|mksh|banyak|kami|akan|coba|dl|useetv|kami', '2020-01-22 15:20:27'),
+	(2, 'acuh|tidak|baik|buruk', '2020-01-22 15:20:27'),
+	(3, 'astaghfirullah|buruk|kurang|cepat', '2020-01-22 15:20:27'),
+	(4, 'alhamdulillah|lancar|terima|kasih', '2020-01-22 15:20:27'),
+	(5, 'murah|banyak|bonus|puas', '2020-01-22 15:20:28'),
+	(6, 'terima|kasih|cepat|banyak', '2020-01-23 07:47:45');
 /*!40000 ALTER TABLE `tokenize` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.user
@@ -3778,7 +3758,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`us_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.user: ~1 rows (approximately)
+-- Dumping data for table sentimen.user: ~0 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 REPLACE INTO `user` (`us_id`, `us_username`, `us_password`) VALUES
 	(1, 'admin', '123456');
