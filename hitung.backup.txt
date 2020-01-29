@@ -275,9 +275,9 @@
                                         generateTabelMasterHead(resp.data.words, resp.data.dataTraining, resp.data.dataTesting);
                                         
                                         generateTabelpositifHead(resp.data.dataTraining, resp.data.pPositif);
-                                        generateTabelNegatifHead(resp.data.dataTraining, resp.data.pPositif);
+                                        generateTabelNegatifHead(resp.data.dataTraining, resp.data.pNegatif);
                                         generateHitungPositif(resp.data.totTraining, resp.data.totPositif, resp.data.pPositif, resp.data.positifKeluar, resp.data.words);
-                                        generateHitungNegatif(resp.data.totTraining, resp.data.totNegatif, resp.data.pPositif, resp.data.negatifKeluar, resp.data.words);
+                                        generateHitungNegatif(resp.data.totTraining, resp.data.totNegatif, resp.data.pNegatif, resp.data.negatifKeluar, resp.data.words);
                                         hitungTesting(resp.data.dataTesting);
                                         generateTableTesting(resp.data.dataTesting);
 
@@ -385,9 +385,9 @@
                     let htmlBody = '';
 
                     $.each(training, function(idx, data){
-                        // if(data.kelas == 'positif'){
+                        if(data.kelas == 'positif'){
                             html += '<th> doc '+(id)+'</th>';
-                        // }
+                        }
 
                         id++;
                     });
@@ -403,7 +403,7 @@
                                 '<td>'+positif.value+'</td>';
 
                         $.each(training, function(alpha, train){
-                            // if(train.kelas == 'positif'){
+                            if(train.kelas == 'positif'){
                                 let stemmer = train.stemmer.split('|');
                                 let counter = 0;
 
@@ -416,7 +416,7 @@
                                 let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
 
                                 htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
-                            // }
+                            }
                         })
                     }
                 });

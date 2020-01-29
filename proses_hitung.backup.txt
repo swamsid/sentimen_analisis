@@ -14,60 +14,41 @@
         $trainingResult = $con->query($trainingData) or die (mysqli_error($con));
 
         while($training = $trainingResult->fetch_assoc()){
-<<<<<<< HEAD
-            foreach(explode('|', $training['s_stemmer']) as $key => $glue){
-                if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
-                    array_push($words, $glue);
-                }
-                
-=======
             // echo $training['s_stemmer'];
->>>>>>> 17aae62ae0810abef4341a440f1e5106ce675934
 
             if(!$training['s_stemmer'] == ""){
                 foreach(explode('|', $training['s_stemmer']) as $key => $glue){
                     if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
                         array_push($words, $glue);
                     }
-                    
-                    if(!array_key_exists($glue, $pPositif)){
-                        $pPositif[$glue] = [
-                            'value'     => $glue,
-                            'count'     => 1,
-                            'kelasDok'  => 'positif',
-                            'kelasText' => ''
-                        ];
+
+                    if($training['k_hasil'] == 'positif'){
+                        if(!array_key_exists($glue, $pPositif)){
+                            $pPositif[$glue] = [
+                                'value'     => $glue,
+                                'count'     => 1,
+                                'kelasDok'  => 'positif',
+                                'kelasText' => ''
+                            ];
+                        }else{
+                            $pPositif[$glue]['count'] += 1;
+                        }
+
+                        // $positifKeluar += 1;
                     }else{
-                        $pPositif[$glue]['count'] += 1;
+                        if(!array_key_exists($glue, $pNegatif)){
+                            $pNegatif[$glue] = [
+                                'value'     => $glue,
+                                'count'     => 1,
+                                'kelasDok'  => 'negatif',
+                                'kelasText' => ''
+                            ];
+                        }else{
+                            $pNegatif[$glue]['count'] += 1;
+                        }
+
+                        // $negatifKeluar += 1;
                     }
-
-                    // if($training['k_hasil'] == 'positif'){
-                    //     if(!array_key_exists($glue, $pPositif)){
-                    //         $pPositif[$glue] = [
-                    //             'value'     => $glue,
-                    //             'count'     => 1,
-                    //             'kelasDok'  => 'positif',
-                    //             'kelasText' => ''
-                    //         ];
-                    //     }else{
-                    //         $pPositif[$glue]['count'] += 1;
-                    //     }
-
-                    //     // $positifKeluar += 1;
-                    // }else{
-                    //     if(!array_key_exists($glue, $pNegatif)){
-                    //         $pNegatif[$glue] = [
-                    //             'value'     => $glue,
-                    //             'count'     => 1,
-                    //             'kelasDok'  => 'negatif',
-                    //             'kelasText' => ''
-                    //         ];
-                    //     }else{
-                    //         $pNegatif[$glue]['count'] += 1;
-                    //     }
-
-                    //     // $negatifKeluar += 1;
-                    // }
                 }
 
                 if($training['k_hasil'] == 'positif')

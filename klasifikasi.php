@@ -1,6 +1,11 @@
 <?php
     session_start();
     include 'lib/connection.php';
+
+    $trainingData = "SELECT count(*) as count FROM stemmer left join klasifikasi on s_data = k_stemmer  WHERE s_data NOT IN (SELECT k_stemmer FROM klasifikasi)";
+    $trainingResult = $con->query($trainingData) or die (mysqli_error($con));
+    $counter = $trainingResult->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +34,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 no-padding">
-                            <!-- <div class="alert alert-info">
-                                Terdapat 5 data ekstrasi yang belum dilakukan perhitungan. <a class="alert-link" href="#">lakukan perhitungan sekarang !</a>.
-                            </div> -->
+                            <?php 
+                                if($counter['count'] > 0){
+                                    echo '  <div class="alert alert-info">
+                                                Terdapat '.$counter['count'] .' data ekstrasi yang belum dilakukan perhitungan. <a class="alert-link" href="#">lakukan perhitungan sekarang !</a>.
+                                            </div>';
+                                }
+                            ?>
                         </div>
                         <div class="col-md-12" style="padding: 0px;">
                             <div class="ibox float-e-margins">
@@ -59,7 +68,7 @@
                                             <tbody>
 
                                         <?php
-                                            $sql = "SELECT * FROM data_crawling";
+                                            $sql = "SELECT * FROM data_crawling join klasifikasi on k_data = dc_id";
                                             $result = $con->query($sql) or die (mysqli_error($con));
                                             $idx = 1;
 
@@ -74,11 +83,9 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <?php
-                                                            if($idx % 3 == 0)
-                                                                echo "<span class='label label-primary'>Positif</span>";
-                                                            else
-                                                                echo "<span class='label label-danger'>Negatif</span>";
+                                                            $labelClass = ($row['k_hasil'] == 'positif') ? 'label-primary' : 'label-danger';
                                                         ?>
+                                                        <span class='label <?= $labelClass ?>'><?= $row['k_hasil'] ?></span>
                                                     </td>
                                                     <td class="text-center">
                                                         <button class="btn btn-xs btn-primary btn-detail" data-id="<?= $row['dc_id'] ?>">

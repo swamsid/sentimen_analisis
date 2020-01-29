@@ -47,9 +47,13 @@
                     $child = $spaner2->item($loop);
                     $input = $tanggal = $auth = "Tidak Ada"; $links = "mediakonsumen.com";
 
-                    $link =  $child->getElementsByTagName('h2');
+                    $h2 =  $child->getElementsByTagName('h2');
                     $tgl =  $child->getElementsByTagName('time');
                     $author =  $child->getElementsByTagName('span');
+
+                    $link = $h2->item(0)->getElementsByTagName('a');
+
+                    // print_r($link->item(0));
 
                     if($link->item(0)){
                         // print_r($author->item());
@@ -67,7 +71,7 @@
                             'input'     => mysqli_real_escape_string($con, trim($input)),
                             'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl)),
                             'author'    => mysqli_real_escape_string($con, $auth),
-                            'link'      => mysqli_real_escape_string($con, $links),
+                            'link'      => mysqli_real_escape_string($con, $link->item(0)->attributes[0]->nodeValue),
                             'sumber'    => mysqli_real_escape_string($con, 'mediakonsumen.com'),
                             'id_post'   => 'Mk'.$dd->attributes[0]->nodeValue
                         ]);
@@ -77,67 +81,78 @@
                 }
                 
             }
+
+            // print_r($data);
             
 
+        // curl Twitter
+            $html = get_html('https://twitter.com/search?f=live&q=indihome%20since%3A2019-01-01%20until%3A2019-05-31&src=typed_query');
+            $dom = new DomDocument();
 
-        // // curl Twitter
-        //     $html = get_html('https://twitter.com/search?f=live&q=indihome%20since%3A2019-01-01%20until%3A2019-05-31&src=typed_query');
-        //     $dom = new DomDocument();
+            // echo $html;
 
-        //     // echo $html;
+            @$dom->loadHTML($html);
 
-        //     @$dom->loadHTML($html);
+            $classname="js-stream-item";
+            $finder = new DomXPath($dom);
+            $spaner = $finder->query("//*[contains(@class, '$classname')]");
 
-        //     $classname="stream-item-header";
-        //     $finder = new DomXPath($dom);
-        //     $spaner = $finder->query("//*[contains(@class, '$classname')]");
-        //     $span = $spaner->item(0);
+            $spaner2 = $finder->query("//*[contains(@class, 'stream-item-header')]");
+            $span = $spaner->item(0);
+            $authors = []; $tgl = []; $ids = []; $loop = 0;
 
-        //     $authors = $tgl = [];
+            // print_r($span->childNodes[2]);
 
-        //     foreach ($spaner as $key => $dd) {
+            foreach ($spaner as $key => $dd) {
+                $child = $spaner2->item(20);
 
-        //         $author = $dd->getElementsByTagName('b');
-        //         $tgls = $dd->getElementsByTagName('span');
+                // print_r($dd);
 
-        //         if($author->item(0)){
-        //             array_push($authors, '@'.$author->item(0)->nodeValue);
-        //         }
+                $author = $dd->getElementsByTagName('b');
+                $tgls = $dd->getElementsByTagName('span');
 
-        //         if($tgls->item(5)){
-        //             array_push($tgl, $tgls->item(5)->nodeValue);
-        //         }
+                if($author->item(0)){
+                    array_push($authors, $author->item(0)->nodeValue);
+                }
+
+                if($tgls->item(5)){
+                    array_push($tgl, $tgls->item(5)->nodeValue);
+                }
+
+                array_push($ids, $dd->attributes[1]->nodeValue);
                 
+                $loop++;
+            }
 
-        //     }
+            // echo $loop;
 
-        //     $classname="js-tweet-text-container";
-        //     $finder = new DomXPath($dom);
-        //     $spaner = $finder->query("//*[contains(@class, '$classname')]");
-        //     $span = $spaner->item(0);
+            $classname="js-tweet-text-container";
+            $finder = new DomXPath($dom);
+            $spaner = $finder->query("//*[contains(@class, '$classname')]");
+            $span = $spaner->item(0);
 
-        //     $inputans = [];
+            $inputans = [];
 
-        //     foreach ($spaner as $key => $dd) {
+            foreach ($spaner as $key => $dd) {
 
-        //         $inputan = $dd->getElementsByTagName('p');
+                $inputan = $dd->getElementsByTagName('p');
 
-        //         if($inputan->item(0)){
-        //             array_push($inputans, $inputan->item(0)->nodeValue);
-        //         }
+                if($inputan->item(0)){
+                    array_push($inputans, $inputan->item(0)->nodeValue);
+                }
 
-        //     }
+            }
 
-        //     foreach ($inputans as $key => $value) {
-        //         array_push($data, [
-        //             'input'     => mysqli_real_escape_string($con, trim($value)),
-        //             'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl[$key])),
-        //             'author'    => mysqli_real_escape_string($con, $authors[$key]),
-        //             'link'      => mysqli_real_escape_string($con, 'twitter.com'),
-        //             'sumber'    => mysqli_real_escape_string($con, 'twitter.com'),
-        //             'id_post'   => 'Tw'
-        //         ]);
-        //     }
+            foreach ($inputans as $key => $value) {
+                array_push($data, [
+                    'input'     => mysqli_real_escape_string($con, trim($value)),
+                    'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl[$key])),
+                    'author'    => mysqli_real_escape_string($con, '@'.$authors[$key]),
+                    'link'      => mysqli_real_escape_string($con, 'https://twitter.com/'.$authors[$key].'/status/'.$ids[$key]),
+                    'sumber'    => mysqli_real_escape_string($con, 'twitter.com'),
+                    'id_post'   => 'Tw-'.mysqli_real_escape_string($con, $ids[$key]),
+                ]);
+            }
         
         $queryCek = "select * from data_crawling";
         $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
