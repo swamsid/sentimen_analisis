@@ -14,15 +14,7 @@
         $trainingResult = $con->query($trainingData) or die (mysqli_error($con));
 
         while($training = $trainingResult->fetch_assoc()){
-<<<<<<< HEAD
-            foreach(explode('|', $training['s_stemmer']) as $key => $glue){
-                if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
-                    array_push($words, $glue);
-                }
-                
-=======
             // echo $training['s_stemmer'];
->>>>>>> 17aae62ae0810abef4341a440f1e5106ce675934
 
             if(!$training['s_stemmer'] == ""){
                 foreach(explode('|', $training['s_stemmer']) as $key => $glue){
