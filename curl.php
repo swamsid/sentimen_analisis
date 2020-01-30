@@ -86,7 +86,7 @@
             
 
         // curl Twitter
-            $html = get_html('https://twitter.com/search?f=live&q=indihome%20since%3A2019-01-01%20until%3A2019-05-31&src=typed_query');
+            $html = get_html('https://twitter.com/search?f=live&q=indihome%20since%3A2019-01-01%20until%3A2020-12-30&src=typed_query');
             $dom = new DomDocument();
 
             // echo $html;
