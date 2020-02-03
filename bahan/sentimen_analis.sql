@@ -30,11 +30,46 @@ CREATE TABLE IF NOT EXISTS `case_folding` (
 -- Dumping data for table sentimen.case_folding: ~0 rows (approximately)
 /*!40000 ALTER TABLE `case_folding` DISABLE KEYS */;
 REPLACE INTO `case_folding` (`cf_data`, `cf_case_folding`, `created_at`) VALUES
-	(128, 'dua kali gagal pasang indihome karena odp penuh walau sudah ajak tetangga', '2020-01-30 09:21:39'),
-	(129, 'kecewa dengan pelayanan indihome', '2020-01-30 09:21:40'),
-	(130, 'pemasangan indihome terkendala karena data odp pusat dan daerah berbeda', '2020-01-30 09:21:40'),
-	(131, 'surat terbuka untuk telkom indihome', '2020-01-30 09:21:41'),
-	(132, 'pemasangan sambungan baru indihome mengecewakan, janji 7×24 jam akan diproses tidak dipenuhi', '2020-01-30 09:21:41');
+	(1, 'pelayanan indihome sangat mengecewakan', '2020-02-03 11:00:24'),
+	(2, 'terima kasih, indihome error sudah langsung diperbaiki', '2020-02-03 11:00:25'),
+	(3, 'kecewa berat dengan telkom 147 indihome fiber', '2020-02-03 11:00:25'),
+	(4, 'pelayanan pasang baru indihome sangat buruk dan mengecewakan', '2020-02-03 11:00:25'),
+	(5, 'after sales indihome yang buruk', '2020-02-03 11:00:25'),
+	(6, 'pembayaran indihome melalui tokopedia mengecewakan', '2020-02-03 11:00:26'),
+	(7, 'indihome problem yang terus-menerus dan pelayanan yang buruk', '2020-02-03 11:00:26'),
+	(8, 'telkom indihome pasang baru secepat kilat tapi kalau maintenance lama', '2020-02-03 11:00:26'),
+	(9, 'pemaksaan, ketidakamanan dan tidak ada tanggung jawab telkom terkait indihome', '2020-02-03 11:00:26'),
+	(10, 'pelayanan maintenance telkom indihome yang buruk', '2020-02-03 11:00:26'),
+	(11, 'indihome sangat tidak memuaskan !!!! sangat mengecewakan !!!! baru tgl 24 april pasang indihome, sejak tgl 4 mei sampai sekarang tgl 15 mei masih tidak bisa digunakan !!!', '2020-02-03 11:00:27'),
+	(12, 'downgrade bisa? setengah-nya dari speed yg paling rendah? mubazir soalnya speednya', '2020-02-03 11:00:27'),
+	(13, 'terima kasih, mmg di modem kami ada restat... cepat sekali tanggapannya.. mksh banyak... kami akan coba dl useetv kami ...', '2020-02-03 11:00:27'),
+	(14, 'halaaaah....sudah sampai hari keempat koneksi internet dan tv saya terputus tanpa ada tindakan yg jelas dari telkom dan indihome... bah', '2020-02-03 11:00:27'),
+	(15, 'siang min, boleh nanya gk, bisa atau tidak berhenti berlangganan indihome selain lewat plaza telkom, terima kasih min sebelumnya', '2020-02-03 11:00:28'),
+	(16, 'mohon di bantu internet saya lemot, speed nya rendah banget, untuk saat ini gak sampe 1 mbps, nomer pelanggan saya 122501212664. mohon di bantu solusinya. terima kasih.', '2020-02-03 11:00:28'),
+	(17, 'cek dm dong. slow respon bgt giliran orang lain cepat balas nya. tolong profesional melayani pelanggan. prosedur awal sudah dilakukan restart & cabut kabel chord. tolong di respon keluhan nya, internet lambat! saya bayar ga pernah telat', '2020-02-03 11:00:28'),
+	(18, 'indihome saya kapan ya bisa connect lagi inet nya? dari kemaren pagi sampai sekarang belum bisa, ini buat kerja, kalau memang gak sanggup bilang aja, biar kita bisa migrasi ke provider lain', '2020-02-03 11:00:28'),
+	(19, 'bangsat ni indihome jam segini suka mati2', '2020-02-03 11:00:28'),
+	(20, 'ada wa masuk dari indihome tentang tagihan pemasangan, disitu tertera tgl pelunasan 5-20. artinya pelanggan bebas dong mau byr diantara rentan tgl yg telah dibuat sendiri oleh indihome. lah ini tadi tgl 15 malam dah diputus jaringanya, aneh. kalo gitu gak usah buat aturan min', '2020-02-03 11:00:29'),
+	(21, 'jaringan nya saja jelek melulu gimana mau tambah speed yg ada bayar lebih mahal aja', '2020-02-03 11:00:29'),
+	(22, 'berapa lama sop telkom untk penanganan masalah spt ini??? tugu sampe lebaran kuda???', '2020-02-03 11:00:29'),
+	(23, 'buka bersama menjadikan kita yg jauh menjadi dekat, yg dekat semakin terikat  yuuuk bukber', '2020-02-03 11:00:30'),
+	(24, 'dari tanggal 8 sampai sekarang permintaan tutup layanan belum di proses. beginikah pelayanannya yang baik?', '2020-02-03 11:00:30'),
+	(25, 'sudah hubungi 147, sales indihome, teknisi yg memasang indihome bahkan chat dari aplikasi my indihome sampai sekarang tidak ada perbaikan !!!!!!!', '2020-02-03 11:00:30'),
+	(26, 'mohon bantuan hybrid box saya tiba2 mati saat menonton tv,', '2020-02-03 11:00:30'),
+	(27, 'wifi eror ,ssid nya ga timbul2 dh hampir seharian , bt', '2020-02-03 11:00:31'),
+	(28, 'lihat saya udah bayar internet putus dari kemarin sampai hari ini belum juga konek', '2020-02-03 11:00:31'),
+	(29, 'selamat pagi,   no.076195190 intenet dan telfon saya putus dan tdk terkoneksi internet sm sekali mohon perbaikannya dg cepat!!!. terimaksih', '2020-02-03 11:00:31'),
+	(30, 'rusak blm di perbaiki 04313126065 sudah laporan dr tgl 2', '2020-02-03 11:00:31'),
+	(31, 'kecewa promo gratis pemasangan indihome', '2020-02-03 11:00:31'),
+	(32, 'sudah lapor masalah internet, belum ada perbaikan', '2020-02-03 11:00:32'),
+	(33, 'sudah berhenti berlangganan internet, abonemen tak berubah', '2020-02-03 11:00:32'),
+	(34, 'layanan internet mati, kapan normal kembali?', '2020-02-03 11:00:32'),
+	(35, 'koneksi internet mengecewakan, tolong segera perbaiki!', '2020-02-03 11:00:32'),
+	(36, 'internet, tv kabel dan telepon mati, adakah kompensasinya?', '2020-02-03 11:00:33'),
+	(37, 'internet masih error, laporan dinyatakan selesai', '2020-02-03 11:00:33'),
+	(38, 'dianggap belum membayar, paket add-on indihome tidak bisa dinikmati', '2020-02-03 11:00:33'),
+	(39, 'tagihan melonjak, kecewa layanan program triple play', '2020-02-03 11:00:33'),
+	(40, 'pengajuan upgrade kecepatan internet tidak ada kejelasan', '2020-02-03 11:00:33');
 /*!40000 ALTER TABLE `case_folding` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.data_crawling
@@ -51,14 +86,49 @@ CREATE TABLE IF NOT EXISTS `data_crawling` (
   PRIMARY KEY (`dc_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.data_crawling: ~5 rows (approximately)
+-- Dumping data for table sentimen.data_crawling: ~0 rows (approximately)
 /*!40000 ALTER TABLE `data_crawling` DISABLE KEYS */;
 REPLACE INTO `data_crawling` (`dc_id`, `dc_post_id`, `dc_author`, `dc_tanggal`, `dc_link`, `dc_sumber`, `dc_inputan`, `created_at`) VALUES
-	(128, 'Mkpost-60587', 'M.Sharon.', '28 Januari 2020', 'https://mediakonsumen.com/2020/01/28/surat-pembaca/dua-kali-gagal-pasang-indihome-karena-odp-penuh-walau-sudah-ajak-tetangga', 'mediakonsumen.com', 'Dua Kali Gagal Pasang IndiHome karena ODP Penuh walau Sudah Ajak Tetangga', '2020-01-30 03:17:31'),
-	(129, 'Mkpost-60494', 'Hisabul Umam', '26 Januari 2020', 'https://mediakonsumen.com/2020/01/26/surat-pembaca/kecewa-dengan-pelayanan-indihome-2', 'mediakonsumen.com', 'Kecewa dengan Pelayanan Indihome', '2020-01-30 03:17:31'),
-	(130, 'Mkpost-60317', 'Alek', '24 Januari 2020', 'https://mediakonsumen.com/2020/01/24/surat-pembaca/pemasangan-indihome-terkendala-karena-data-odp-pusat-dan-daerah-berbeda', 'mediakonsumen.com', 'Pemasangan IndiHome Terkendala karena Data ODP Pusat dan Daerah Berbeda', '2020-01-30 03:17:31'),
-	(131, 'Mkpost-59806', 'Donny Pradana', '23 Januari 2020', 'https://mediakonsumen.com/2020/01/23/surat-pembaca/surat-terbuka-untuk-telkom-indihome-2', 'mediakonsumen.com', 'Surat Terbuka untuk Telkom Indihome', '2020-01-30 03:17:31'),
-	(132, 'Mkpost-60048', 'ilham', '21 Januari 2020', 'https://mediakonsumen.com/2020/01/21/surat-pembaca/pemasangan-sambungan-baru-indihome-mengecewakan-janji-7x24-jam-akan-diproses-tidak-dipenuhi', 'mediakonsumen.com', 'Pemasangan Sambungan Baru IndiHome Mengecewakan, Janji 7×24 Jam Akan Diproses Tidak Dipenuhi', '2020-01-30 03:17:31');
+	(1, '1', 'Adi Wijaya', '6 januari 2017', 'https://mediakonsumen.com/2017/01/06/surat-pembaca/pelayanan-indihome-sangat-mengecewakan', 'Mediakonsumen.com', 'Pelayanan Indihome Sangat Mengecewakan', '2020-02-03 10:50:47'),
+	(2, '2', 'Imam Situmeang', '26 Februari 2018', 'https://mediakonsumen.com/2018/02/26/surat-pembaca/terima-kasih-indihome-error-sudah-langsung-diperbaiki', 'Mediakonsumen.com', 'Terima kasih, Indihome Error Sudah Langsung Diperbaiki', '2020-02-03 10:50:47'),
+	(3, '3', 'Khu tony', '23 januari 2017', 'https://mediakonsumen.com/2017/01/23/surat-pembaca/kecewa-berat-telkom-147-indihome-fiber', 'Mediakonsumen.com', 'Kecewa Berat dengan Telkom 147 Indihome Fiber', '2020-02-03 10:50:47'),
+	(4, '4', 'Atitya', '17 april 2018', 'https://mediakonsumen.com/2018/04/17/surat-pembaca/pelayanan-pasang-baru-indihome-sangat-buruk-dan-mengecewakan', 'Mediakonsumen.com', 'Pelayanan Pasang Baru Indihome Sangat Buruk dan Mengecewakan', '2020-02-03 10:50:47'),
+	(5, '5', 'Ara komputer', '11 februari 2017', 'https://mediakonsumen.com/2017/02/11/surat-pembaca/after-sales-indihome-yang-buruk', 'Mediakonsumen.com', 'After Sales Indihome yang Buruk', '2020-02-03 10:50:47'),
+	(6, '6', 'yohanes', '43405', 'https://mediakonsumen.com/2018/11/01/surat-pembaca/pembayaran-indihome-melalui-tokopedia-mengecewakan', 'Mediakonsumen.com', 'Pembayaran Indihome Melalui Tokopedia Mengecewakan', '2020-02-03 10:50:47'),
+	(7, '7', 'Rifki balfas', '5 april 2017', 'https://mediakonsumen.com/2017/04/05/surat-pembaca/indihome-problem-terus-menerus-dan-pelayanan-buruk', 'Mediakonsumen.com', 'Indihome Problem yang Terus-menerus dan Pelayanan yang Buruk', '2020-02-03 10:50:47'),
+	(8, '8', 'Syarif H', '10 april 2017', 'https://mediakonsumen.com/2017/04/10/surat-pembaca/telkom-indihome-pasang-baru-secepat-kilat-kalau-maintenance-lama', 'Mediakonsumen.com', 'Telkom Indihome Pasang Baru Secepat Kilat TAPI kalau Maintenance Lama', '2020-02-03 10:50:47'),
+	(9, '9', 'Novan Agung W', '21 April 2017', 'https://mediakonsumen.com/2017/04/21/surat-pembaca/pemaksaan-ketidakamanan-dan-tidak-ada-tanggung-jawab-telkom-terkait-indihome', 'Mediakonsumen.com', 'Pemaksaan, Ketidakamanan dan Tidak Ada Tanggung Jawab Telkom terkait Indihome', '2020-02-03 10:50:47'),
+	(10, '10', '15 Juni 2017', 'Rizky Merdietio', 'https://mediakonsumen.com/2017/06/15/surat-pembaca/pelayanan-maintenance-telkom-indihome-buruk', 'Mediakonsumen.com', 'Pelayanan Maintenance Telkom IndiHome yang Buruk', '2020-02-03 10:50:47'),
+	(11, '11', '15 mei 2019', 'Priska Mandey', 'https://twitter.com/frikepriska/status/1128659182490488833', 'twitter.com', 'Indihome sangat tidak memuaskan !!!! Sangat mengecewakan !!!! Baru tgl 24 April pasang indihome, sejak tgl 4 mei sampai sekarang tgl 15 Mei masih tidak bisa digunakan !!!', '2020-02-03 10:50:47'),
+	(12, '12', '30 januari 2020', 'sidiq ?', 'https://twitter.com/sidiq16/status/1222762046552297473', 'twitter.com', 'Downgrade bisa? Setengah-nya dari speed yg paling rendah? Mubazir soalnya speednya', '2020-02-03 10:50:47'),
+	(13, '13', '18 mei 2019', 'Ken Arok', 'https://twitter.com/KenArok10193945/status/1129673209123500034', 'twitter.com', 'terima kasih, mmg di modem kami ada restat... cepat sekali tanggapannya.. mksh banyak... kami akan coba dl useetv kami ...', '2020-02-03 10:50:47'),
+	(14, '14', '18 mei 2019', 'bambu silan', 'https://twitter.com/Adenituiwang/status/1129598420673372160', 'twitter.com', 'Halaaaah....sudah sampai hari keempat koneksi internet dan tv saya terputus tanpa ada tindakan yg jelas dari telkom dan indihome... Bah', '2020-02-03 10:50:47'),
+	(15, '15', '17 mei 2019', 'Hendi', 'https://twitter.com/hendisni/status/1129278119683092480', 'twitter.com', 'Siang min, boleh nanya gk, bisa atau tidak berhenti berlangganan indihome selain lewat plaza telkom, terima kasih min sebelumnya', '2020-02-03 10:50:47'),
+	(16, '16', '29 januari 2020', 'Yanuar Andres', 'https://twitter.com/gelaranbanyumas/status/1222503022565003266', 'twitter.com', 'Mohon di bantu internet saya lemot, speed nya rendah banget, untuk saat ini gak sampe 1 mbps, nomer pelanggan saya 122501212664. Mohon di bantu solusinya. Terima kasih.', '2020-02-03 10:50:47'),
+	(17, '17', '28 januari 2020', 'Andry Hadi Utomo', 'https://twitter.com/utomohadiandry/status/1222173558673006592', 'twitter.com', 'Cek dm dong. Slow respon bgt giliran orang lain cepat balas nya. Tolong profesional melayani pelanggan. Prosedur awal sudah dilakukan restart & cabut kabel chord. Tolong di respon keluhan nya, internet lambat! Saya bayar ga pernah telat', '2020-02-03 10:50:47'),
+	(18, '18', '17 mei 2019', 'Rama', 'https://twitter.com/ramadhan_chang/status/1129185828679213056', 'twitter.com', 'Indihome saya kapan ya bisa connect lagi inet nya? Dari kemaren pagi sampai sekarang belum bisa, ini buat kerja, kalau memang gak sanggup bilang aja, biar kita bisa migrasi ke provider lain', '2020-02-03 10:50:47'),
+	(19, '19', '26 januari 2020', 'Majin66', 'https://twitter.com/DavyKharis/status/1221199564603940864', 'twitter.com', 'Bangsat ni indihome jam segini suka mati2', '2020-02-03 10:50:47'),
+	(20, '20', '16 mei 2019', 'Banyu Samudro', 'https://twitter.com/banyuocean/status/1128726306395262979', 'twitter.com', 'Ada WA masuk dari indihome tentang tagihan pemasangan, disitu tertera tgl pelunasan 5-20. Artinya pelanggan bebas dong mau byr diantara rentan tgl yg telah dibuat sendiri oleh indihome. Lah ini tadi tgl 15 malam dah diputus jaringanya, aneh. Kalo gitu gak usah buat aturan min', '2020-02-03 10:50:47'),
+	(21, '21', '30 januari 2020', 'Sinichi Koduro', 'https://twitter.com/andresmile88/status/1222889217262419969', 'twitter.com', 'Jaringan nya saja jelek melulu gimana mau tambah speed yg ada bayar lebih mahal aja', '2020-02-03 10:50:47'),
+	(22, '22', '16 mei 2019', 'Agungsugihartono', 'https://twitter.com/Agungsu78099015/status/1128884240764923904', 'twitter.com', 'Berapa lama SOP telkom untk penanganan masalah spt ini??? Tugu sampe lebaran kuda???', '2020-02-03 10:50:47'),
+	(23, '23', '20 mei 2019', 'Nadisa', 'https://twitter.com/ecapedee/status/1130305313284939776', 'twitter.com', 'Buka bersama menjadikan kita yg jauh menjadi dekat, yg dekat semakin terikat  yuuuk bukber', '2020-02-03 10:50:47'),
+	(24, '24', '15 mei 2019', 'Consumer', 'https://twitter.com/heartthrob_boy/status/1128474294080532481', 'twitter.com', 'Dari tanggal 8 sampai sekarang permintaan tutup layanan belum di proses. Beginikah pelayanannya yang baik?', '2020-02-03 10:50:47'),
+	(25, '25', '15  meio 2019', 'Priska Mandey', 'https://twitter.com/frikepriska/status/1128659239973425156', 'twitter.com', 'Sudah hubungi 147, sales indihome, teknisi yg memasang indihome bahkan chat dari aplikasi my indihome sampai sekarang tidak ada perbaikan !!!!!!!', '2020-02-03 10:50:47'),
+	(26, '26', '19 mei 2019', 'ade perdana putra', 'https://twitter.com/AdeinAde/status/1129940673413566464', 'twitter.com', 'Mohon bantuan hybrid box saya tiba2 mati saat menonton tv,', '2020-02-03 10:50:47'),
+	(27, '27', '18 mei 2019', 'Aghes', 'https://twitter.com/isaghez/status/1129547037228142592', 'twitter.com', 'Wifi eror ,SSID NYA GA TIMBUL2 DH HAMPIR SEHARIAN , BT', '2020-02-03 10:50:47'),
+	(28, '28', '15 mei 2019', 'Arifin', 'https://twitter.com/rimin_aja/status/1128576186550931456', 'twitter.com', 'Lihat saya udah bayar internet putus dari kemarin sampai hari ini belum juga konek', '2020-02-03 10:50:47'),
+	(29, '29', '18 mei 2019', 'Ifan priyadi', 'https://twitter.com/priyadi_ifan/status/1129488397318287361', 'twitter.com', 'Selamat pagi,   no.076195190 intenet dan telfon saya putus dan tdk terkoneksi internet sm sekali mohon perbaikannya dg cepat!!!. Terimaksih', '2020-02-03 10:50:47'),
+	(30, '30', '18 mei 2019', 'Ephen Korengkeng', 'https://twitter.com/ephenkorengkeng/status/1129720918131953670', 'twitter.com', 'Rusak blm di perbaiki 04313126065 sudah laporan dr tgl 2', '2020-02-03 10:50:47'),
+	(31, '31', '20 januari 2017', 'Heriyanto', 'https://news.detik.com/suara-pembaca/d-3401326/kecewa-promo-gratis-pemasangan-indihome?_ga=2.205403344.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Kecewa Promo Gratis Pemasangan IndiHome', '2020-02-03 10:50:47'),
+	(32, '32', '24 januari 2017', 'Ivan', 'https://news.detik.com/suara-pembaca/d-3404094/sudah-lapor-masalah-internet-belum-ada-perbaikan?_ga=2.205403344.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Sudah Lapor Masalah Internet, belum Ada Perbaikan', '2020-02-03 10:50:47'),
+	(33, '33', '3 februari 2017', 'Siska', 'https://news.detik.com/suara-pembaca/d-3412961/sudah-berhenti-berlangganan-internet-abonemen-tak-berubah?_ga=2.205403344.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Sudah Berhenti Berlangganan Internet, Abonemen tak Berubah', '2020-02-03 10:50:47'),
+	(34, '34', '7 februari 2017', 'Irwan', 'https://news.detik.com/suara-pembaca/d-3415547/layanan-internet-mati-kapan-normal-kembali?_ga=2.205403344.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Layanan Internet Mati, Kapan Normal Kembali?', '2020-02-03 10:50:47'),
+	(35, '35', '14 februari 2017', 'Andik', 'https://news.detik.com/suara-pembaca/d-3421830/koneksi-internet-mengecewakan-tolong-segera-perbaiki?_ga=2.196491628.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Koneksi Internet Mengecewakan, Tolong Segera Perbaiki!', '2020-02-03 10:50:47'),
+	(36, '36', '6 mei 2017', 'Andir', 'https://news.detik.com/suara-pembaca/d-3439418/internet-tv-kabel-dan-telepon-mati-adakah-kompensasinya?_ga=2.196491628.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Internet, TV Kabel dan Telepon Mati, Adakah Kompensasinya?', '2020-02-03 10:50:47'),
+	(37, '37', '9 maret 2017', 'Bobby', 'https://news.detik.com/suara-pembaca/d-3442221/internet-masih-error-laporan-dinyatakan-selesai?_ga=2.200275310.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Internet Masih Error, Laporan Dinyatakan Selesai', '2020-02-03 11:00:21'),
+	(38, '38', '16 maret 2017', 'Kenny', 'https://news.detik.com/suara-pembaca/d-3448958/dianggap-belum-membayar-paket-add-on-indihome-tidak-bisa-dinikmati?_ga=2.200275310.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Dianggap belum Membayar, Paket Add-On IndiHome tidak Bisa Dinikmati', '2020-02-03 10:50:47'),
+	(39, '39', '10 april 2017', 'Fransiska', 'https://news.detik.com/suara-pembaca/d-3470272/tagihan-melonjak-kecewa-layanan-program-triple-play?_ga=2.3535472.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Tagihan Melonjak, Kecewa Layanan Program Triple Play', '2020-02-03 10:50:47'),
+	(40, '40', '6 mei 2017', 'vincent', 'https://news.detik.com/suara-pembaca/d-3493736/pengajuan-upgrade-kecepatan-internet-tidak-ada-kejelasan?_ga=2.3535472.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Pengajuan Upgrade Kecepatan Internet tidak Ada Kejelasan', '2020-02-03 10:50:47');
 /*!40000 ALTER TABLE `data_crawling` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.kamus_liu
@@ -5599,6 +5669,47 @@ CREATE TABLE IF NOT EXISTS `klasifikasi` (
 
 -- Dumping data for table sentimen.klasifikasi: ~0 rows (approximately)
 /*!40000 ALTER TABLE `klasifikasi` DISABLE KEYS */;
+REPLACE INTO `klasifikasi` (`k_stemmer`, `k_data`, `k_positif`, `k_negatif`, `k_hasil`, `created_at`) VALUES
+	(1, 1, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(2, 2, NULL, NULL, 'positif', '2020-02-03 11:05:52'),
+	(3, 3, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(4, 4, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(5, 5, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(6, 6, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(7, 7, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(8, 8, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(9, 9, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(10, 10, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(11, 11, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(12, 12, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(13, 13, NULL, NULL, 'positif', '2020-02-03 11:05:52'),
+	(14, 14, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(15, 15, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(16, 16, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(17, 17, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(18, 18, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(19, 19, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(20, 20, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(21, 21, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(22, 22, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(23, 23, NULL, NULL, 'positif', '2020-02-03 11:05:52'),
+	(24, 24, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(25, 25, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(26, 26, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(27, 27, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(28, 28, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(29, 29, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(30, 30, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(31, 31, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(32, 32, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(33, 33, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(34, 34, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(35, 35, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(36, 36, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(37, 37, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(38, 38, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(39, 39, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
+	(40, 40, NULL, NULL, 'negatif', '2020-02-03 11:05:52');
 /*!40000 ALTER TABLE `klasifikasi` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.stemmer
@@ -5614,11 +5725,46 @@ CREATE TABLE IF NOT EXISTS `stemmer` (
 -- Dumping data for table sentimen.stemmer: ~0 rows (approximately)
 /*!40000 ALTER TABLE `stemmer` DISABLE KEYS */;
 REPLACE INTO `stemmer` (`s_data`, `s_stemmer`, `created_at`) VALUES
-	(128, 'dua|kali|gagal|pasang|penuh|walau|sudah|ajak|tetangga', '2020-01-30 09:21:40'),
-	(129, 'kecewa', '2020-01-30 09:21:40'),
-	(130, 'data|pusat|daerah', '2020-01-30 09:21:41'),
-	(131, 'surat', '2020-01-30 09:21:41'),
-	(132, 'baru|janji|jam|tidak', '2020-01-30 09:21:41');
+	(1, 'sangat', '2020-02-03 11:00:25'),
+	(2, 'terima|kasih|sudah|langsung', '2020-02-03 11:00:25'),
+	(3, 'kecewa|berat|fiber', '2020-02-03 11:00:25'),
+	(4, 'pasang|baru|sangat|buruk', '2020-02-03 11:00:25'),
+	(5, 'buruk', '2020-02-03 11:00:26'),
+	(6, '', '2020-02-03 11:00:26'),
+	(7, 'problem|buruk', '2020-02-03 11:00:26'),
+	(8, 'pasang|baru|kilat|tapi|lama', '2020-02-03 11:00:26'),
+	(9, 'tidak|ada|tanggung|jawab', '2020-02-03 11:00:26'),
+	(10, 'buruk', '2020-02-03 11:00:27'),
+	(11, 'sangat|tidak|sangat|baru|april|pasang|mei|sekarang|mei|masih|tidak|bisa', '2020-02-03 11:00:27'),
+	(12, 'bisa|paling|rendah|mubazir', '2020-02-03 11:00:27'),
+	(13, 'terima|kasih|modem|ada|cepat|banyak|coba', '2020-02-03 11:00:27'),
+	(14, 'sudah|hari|koneksi|tanpa|ada|jelas|bah', '2020-02-03 11:00:28'),
+	(15, 'siang|min|boleh|bisa|tidak|lewat|plaza|terima|kasih|min', '2020-02-03 11:00:28'),
+	(16, 'mohon|bantu|rendah|banget|saat|mohon|bantu|terima|kasih', '2020-02-03 11:00:28'),
+	(17, 'cek|dong|orang|lain|cepat|balas|tolong|profesional|prosedur|awal|sudah|cabut|kabel|tolong|lambat|bayar|pernah|telat', '2020-02-03 11:00:28'),
+	(18, 'ya|bisa|lagi|pagi|sekarang|belum|bisa|kerja|memang|sanggup|bilang|aja|bisa|migrasi|lain', '2020-02-03 11:00:28'),
+	(19, 'bangsat|ni|jam|suka', '2020-02-03 11:00:29'),
+	(20, 'ada|wa|masuk|bebas|dong|mau|rentan|telah|sendiri|lah|tadi|malam|dah|aneh|kalo|usah|min', '2020-02-03 11:00:29'),
+	(21, 'saja|jelek|melulu|mau|tambah|ada|bayar|lebih|mahal|aja', '2020-02-03 11:00:29'),
+	(22, 'berapa|lama|sop|masalah|tugu|lebaran|kuda', '2020-02-03 11:00:30'),
+	(23, 'buka|jauh|dekat|dekat', '2020-02-03 11:00:30'),
+	(24, 'tanggal|sekarang|tutup|belum|proses|baik', '2020-02-03 11:00:30'),
+	(25, 'sudah|teknisi|aplikasi|sekarang|tidak|ada', '2020-02-03 11:00:30'),
+	(26, 'mohon|mati|saat', '2020-02-03 11:00:31'),
+	(27, 'eror|hampir', '2020-02-03 11:00:31'),
+	(28, 'lihat|bayar|putus|kemarin|hari|belum|juga', '2020-02-03 11:00:31'),
+	(29, 'selamat|pagi|putus|mohon|cepat', '2020-02-03 11:00:31'),
+	(30, 'rusak|sudah', '2020-02-03 11:00:31'),
+	(31, 'kecewa|gratis', '2020-02-03 11:00:32'),
+	(32, 'sudah|lapor|masalah|belum|ada', '2020-02-03 11:00:32'),
+	(33, 'sudah|abonemen|tak', '2020-02-03 11:00:32'),
+	(34, 'mati|normal|kembali', '2020-02-03 11:00:32'),
+	(35, 'koneksi|tolong|segera', '2020-02-03 11:00:32'),
+	(36, 'kabel|telepon|mati', '2020-02-03 11:00:33'),
+	(37, 'masih|selesai', '2020-02-03 11:00:33'),
+	(38, 'belum|paket|tidak|bisa', '2020-02-03 11:00:33'),
+	(39, 'kecewa|program', '2020-02-03 11:00:33'),
+	(40, 'tidak|ada', '2020-02-03 11:00:34');
 /*!40000 ALTER TABLE `stemmer` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.stopword
@@ -5634,11 +5780,46 @@ CREATE TABLE IF NOT EXISTS `stopword` (
 -- Dumping data for table sentimen.stopword: ~0 rows (approximately)
 /*!40000 ALTER TABLE `stopword` DISABLE KEYS */;
 REPLACE INTO `stopword` (`s_data`, `s_stopword`, `created_at`) VALUES
-	(128, 'dua|kali|gagal|pasang|indihome|odp|penuh|walau|sudah|ajak|tetangga', '2020-01-30 09:21:40'),
-	(129, 'kecewa|pelayanan|indihome', '2020-01-30 09:21:40'),
-	(130, 'pemasangan|indihome|terkendala|data|odp|pusat|daerah|berbeda', '2020-01-30 09:21:40'),
-	(131, 'surat|terbuka|telkom|indihome', '2020-01-30 09:21:41'),
-	(132, 'pemasangan|sambungan|baru|indihome|mengecewakan|janji|7×|24|jam|diproses|tidak|dipenuhi', '2020-01-30 09:21:41');
+	(1, 'pelayanan|indihome|sangat|mengecewakan', '2020-02-03 11:00:24'),
+	(2, 'terima|kasih|indihome|error|sudah|langsung|diperbaiki', '2020-02-03 11:00:25'),
+	(3, 'kecewa|berat|telkom|147|indihome|fiber', '2020-02-03 11:00:25'),
+	(4, 'pelayanan|pasang|baru|indihome|sangat|buruk|mengecewakan', '2020-02-03 11:00:25'),
+	(5, 'after|sales|indihome|buruk', '2020-02-03 11:00:26'),
+	(6, 'pembayaran|indihome|tokopedia|mengecewakan', '2020-02-03 11:00:26'),
+	(7, 'indihome|problem|terus-menerus|pelayanan|buruk', '2020-02-03 11:00:26'),
+	(8, 'telkom|indihome|pasang|baru|secepat|kilat|tapi|maintenance|lama', '2020-02-03 11:00:26'),
+	(9, 'pemaksaan|ketidakamanan|tidak|ada|tanggung|jawab|telkom|terkait|indihome', '2020-02-03 11:00:26'),
+	(10, 'pelayanan|maintenance|telkom|indihome|buruk', '2020-02-03 11:00:27'),
+	(11, 'indihome|sangat|tidak|memuaskan|sangat|mengecewakan|baru|tgl|24|april|pasang|indihome|tgl|mei|sekarang|tgl|15|mei|masih|tidak|bisa|digunakan', '2020-02-03 11:00:27'),
+	(12, 'downgrade|bisa|setengah-nya|speed|yg|paling|rendah|mubazir|soalnya|speednya', '2020-02-03 11:00:27'),
+	(13, 'terima|kasih|mmg|modem|ada|restat|cepat|sekali|tanggapannya|mksh|banyak|coba|dl|useetv', '2020-02-03 11:00:27'),
+	(14, 'halaaaah|sudah|hari|keempat|koneksi|internet|tv|terputus|tanpa|ada|tindakan|yg|jelas|telkom|indihome|bah', '2020-02-03 11:00:28'),
+	(15, 'siang|min|boleh|nanya|gk|bisa|tidak|berhenti|berlangganan|indihome|lewat|plaza|telkom|terima|kasih|min', '2020-02-03 11:00:28'),
+	(16, 'mohon|bantu|internet|lemot|speed|nya|rendah|banget|saat|gak|sampe|mbps|nomer|pelanggan|122501212664|mohon|bantu|solusinya|terima|kasih', '2020-02-03 11:00:28'),
+	(17, 'cek|dm|dong|slow|respon|bgt|giliran|orang|lain|cepat|balas|nya|tolong|profesional|melayani|pelanggan|prosedur|awal|sudah|dilakukan|restart|cabut|kabel|chord|tolong|respon|keluhan|nya|internet|lambat|bayar|ga|pernah|telat', '2020-02-03 11:00:28'),
+	(18, 'indihome|ya|bisa|connect|lagi|inet|nya|kemaren|pagi|sekarang|belum|bisa|kerja|memang|gak|sanggup|bilang|aja|bisa|migrasi|provider|lain', '2020-02-03 11:00:28'),
+	(19, 'bangsat|ni|indihome|jam|segini|suka|mati2', '2020-02-03 11:00:29'),
+	(20, 'ada|wa|masuk|indihome|tagihan|pemasangan|disitu|tertera|tgl|pelunasan|5-20|artinya|pelanggan|bebas|dong|mau|byr|diantara|rentan|tgl|yg|telah|dibuat|sendiri|indihome|lah|tadi|tgl|15|malam|dah|diputus|jaringanya|aneh|kalo|gitu|gak|usah|aturan|min', '2020-02-03 11:00:29'),
+	(21, 'jaringan|nya|saja|jelek|melulu|gimana|mau|tambah|speed|yg|ada|bayar|lebih|mahal|aja', '2020-02-03 11:00:29'),
+	(22, 'berapa|lama|sop|telkom|untk|penanganan|masalah|spt|ini|tugu|sampe|lebaran|kuda', '2020-02-03 11:00:30'),
+	(23, 'buka|menjadikan|yg|jauh|menjadi|dekat|yg|dekat|semakin|terikat|yuuuk|bukber', '2020-02-03 11:00:30'),
+	(24, 'tanggal|sekarang|permintaan|tutup|layanan|belum|proses|beginikah|pelayanannya|baik', '2020-02-03 11:00:30'),
+	(25, 'sudah|hubungi|147,|sales|indihome|teknisi|yg|memasang|indihome|chat|aplikasi|my|indihome|sekarang|tidak|ada|perbaikan', '2020-02-03 11:00:30'),
+	(26, 'mohon|bantuan|hybrid|box|tiba2|mati|saat|menonton|tv', '2020-02-03 11:00:31'),
+	(27, 'wifi|eror|ssid|nya|ga|timbul2|dh|hampir|seharian|bt', '2020-02-03 11:00:31'),
+	(28, 'lihat|udah|bayar|internet|putus|kemarin|hari|belum|juga|konek', '2020-02-03 11:00:31'),
+	(29, 'selamat|pagi|no|076195190|intenet|telfon|putus|tdk|terkoneksi|internet|sm|sekali|mohon|perbaikannya|dg|cepat|terimaksih', '2020-02-03 11:00:31'),
+	(30, 'rusak|blm|perbaiki|04313126065|sudah|laporan|dr|tgl', '2020-02-03 11:00:31'),
+	(31, 'kecewa|promo|gratis|pemasangan|indihome', '2020-02-03 11:00:32'),
+	(32, 'sudah|lapor|masalah|internet|belum|ada|perbaikan', '2020-02-03 11:00:32'),
+	(33, 'sudah|berhenti|berlangganan|internet|abonemen|tak|berubah', '2020-02-03 11:00:32'),
+	(34, 'layanan|internet|mati|normal|kembali', '2020-02-03 11:00:32'),
+	(35, 'koneksi|internet|mengecewakan|tolong|segera|perbaiki', '2020-02-03 11:00:32'),
+	(36, 'internet|tv|kabel|telepon|mati|adakah|kompensasinya', '2020-02-03 11:00:33'),
+	(37, 'internet|masih|error|laporan|dinyatakan|selesai', '2020-02-03 11:00:33'),
+	(38, 'dianggap|belum|membayar|paket|add-on|indihome|tidak|bisa|dinikmati', '2020-02-03 11:00:33'),
+	(39, 'tagihan|melonjak|kecewa|layanan|program|triple|play', '2020-02-03 11:00:33'),
+	(40, 'pengajuan|upgrade|kecepatan|internet|tidak|ada|kejelasan', '2020-02-03 11:00:33');
 /*!40000 ALTER TABLE `stopword` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.tokenize
@@ -5654,11 +5835,46 @@ CREATE TABLE IF NOT EXISTS `tokenize` (
 -- Dumping data for table sentimen.tokenize: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tokenize` DISABLE KEYS */;
 REPLACE INTO `tokenize` (`t_data`, `t_tokenize`, `created_at`) VALUES
-	(128, 'dua|kali|gagal|pasang|indihome|karena|odp|penuh|walau|sudah|ajak|tetangga', '2020-01-30 09:21:40'),
-	(129, 'kecewa|dengan|pelayanan|indihome', '2020-01-30 09:21:40'),
-	(130, 'pemasangan|indihome|terkendala|karena|data|odp|pusat|dan|daerah|berbeda', '2020-01-30 09:21:40'),
-	(131, 'surat|terbuka|untuk|telkom|indihome', '2020-01-30 09:21:41'),
-	(132, 'pemasangan|sambungan|baru|indihome|mengecewakan|janji|7×|24|jam|akan|diproses|tidak|dipenuhi', '2020-01-30 09:21:41');
+	(1, 'pelayanan|indihome|sangat|mengecewakan', '2020-02-03 11:00:24'),
+	(2, 'terima|kasih|indihome|error|sudah|langsung|diperbaiki', '2020-02-03 11:00:25'),
+	(3, 'kecewa|berat|dengan|telkom|147|indihome|fiber', '2020-02-03 11:00:25'),
+	(4, 'pelayanan|pasang|baru|indihome|sangat|buruk|dan|mengecewakan', '2020-02-03 11:00:25'),
+	(5, 'after|sales|indihome|yang|buruk', '2020-02-03 11:00:25'),
+	(6, 'pembayaran|indihome|melalui|tokopedia|mengecewakan', '2020-02-03 11:00:26'),
+	(7, 'indihome|problem|yang|terus-menerus|dan|pelayanan|yang|buruk', '2020-02-03 11:00:26'),
+	(8, 'telkom|indihome|pasang|baru|secepat|kilat|tapi|kalau|maintenance|lama', '2020-02-03 11:00:26'),
+	(9, 'pemaksaan|ketidakamanan|dan|tidak|ada|tanggung|jawab|telkom|terkait|indihome', '2020-02-03 11:00:26'),
+	(10, 'pelayanan|maintenance|telkom|indihome|yang|buruk', '2020-02-03 11:00:26'),
+	(11, 'indihome|sangat|tidak|memuaskan|sangat|mengecewakan|baru|tgl|24|april|pasang|indihome|sejak|tgl|mei|sampai|sekarang|tgl|15|mei|masih|tidak|bisa|digunakan', '2020-02-03 11:00:27'),
+	(12, 'downgrade|bisa|setengah-nya|dari|speed|yg|paling|rendah|mubazir|soalnya|speednya', '2020-02-03 11:00:27'),
+	(13, 'terima|kasih|mmg|di|modem|kami|ada|restat|cepat|sekali|tanggapannya|mksh|banyak|kami|akan|coba|dl|useetv|kami', '2020-02-03 11:00:27'),
+	(14, 'halaaaah|sudah|sampai|hari|keempat|koneksi|internet|dan|tv|saya|terputus|tanpa|ada|tindakan|yg|jelas|dari|telkom|dan|indihome|bah', '2020-02-03 11:00:27'),
+	(15, 'siang|min|boleh|nanya|gk|bisa|atau|tidak|berhenti|berlangganan|indihome|selain|lewat|plaza|telkom|terima|kasih|min|sebelumnya', '2020-02-03 11:00:28'),
+	(16, 'mohon|di|bantu|internet|saya|lemot|speed|nya|rendah|banget|untuk|saat|ini|gak|sampe|mbps|nomer|pelanggan|saya|122501212664|mohon|di|bantu|solusinya|terima|kasih', '2020-02-03 11:00:28'),
+	(17, 'cek|dm|dong|slow|respon|bgt|giliran|orang|lain|cepat|balas|nya|tolong|profesional|melayani|pelanggan|prosedur|awal|sudah|dilakukan|restart|cabut|kabel|chord|tolong|di|respon|keluhan|nya|internet|lambat|saya|bayar|ga|pernah|telat', '2020-02-03 11:00:28'),
+	(18, 'indihome|saya|kapan|ya|bisa|connect|lagi|inet|nya|dari|kemaren|pagi|sampai|sekarang|belum|bisa|ini|buat|kerja|kalau|memang|gak|sanggup|bilang|aja|biar|kita|bisa|migrasi|ke|provider|lain', '2020-02-03 11:00:28'),
+	(19, 'bangsat|ni|indihome|jam|segini|suka|mati2', '2020-02-03 11:00:29'),
+	(20, 'ada|wa|masuk|dari|indihome|tentang|tagihan|pemasangan|disitu|tertera|tgl|pelunasan|5-20|artinya|pelanggan|bebas|dong|mau|byr|diantara|rentan|tgl|yg|telah|dibuat|sendiri|oleh|indihome|lah|ini|tadi|tgl|15|malam|dah|diputus|jaringanya|aneh|kalo|gitu|gak|usah|buat|aturan|min', '2020-02-03 11:00:29'),
+	(21, 'jaringan|nya|saja|jelek|melulu|gimana|mau|tambah|speed|yg|ada|bayar|lebih|mahal|aja', '2020-02-03 11:00:29'),
+	(22, 'berapa|lama|sop|telkom|untk|penanganan|masalah|spt|ini|tugu|sampe|lebaran|kuda', '2020-02-03 11:00:30'),
+	(23, 'buka|bersama|menjadikan|kita|yg|jauh|menjadi|dekat|yg|dekat|semakin|terikat|yuuuk|bukber', '2020-02-03 11:00:30'),
+	(24, 'dari|tanggal|sampai|sekarang|permintaan|tutup|layanan|belum|di|proses|beginikah|pelayanannya|yang|baik', '2020-02-03 11:00:30'),
+	(25, 'sudah|hubungi|147,|sales|indihome|teknisi|yg|memasang|indihome|bahkan|chat|dari|aplikasi|my|indihome|sampai|sekarang|tidak|ada|perbaikan', '2020-02-03 11:00:30'),
+	(26, 'mohon|bantuan|hybrid|box|saya|tiba2|mati|saat|menonton|tv', '2020-02-03 11:00:30'),
+	(27, 'wifi|eror|ssid|nya|ga|timbul2|dh|hampir|seharian|bt', '2020-02-03 11:00:31'),
+	(28, 'lihat|saya|udah|bayar|internet|putus|dari|kemarin|sampai|hari|ini|belum|juga|konek', '2020-02-03 11:00:31'),
+	(29, 'selamat|pagi|no|076195190|intenet|dan|telfon|saya|putus|dan|tdk|terkoneksi|internet|sm|sekali|mohon|perbaikannya|dg|cepat|terimaksih', '2020-02-03 11:00:31'),
+	(30, 'rusak|blm|di|perbaiki|04313126065|sudah|laporan|dr|tgl', '2020-02-03 11:00:31'),
+	(31, 'kecewa|promo|gratis|pemasangan|indihome', '2020-02-03 11:00:32'),
+	(32, 'sudah|lapor|masalah|internet|belum|ada|perbaikan', '2020-02-03 11:00:32'),
+	(33, 'sudah|berhenti|berlangganan|internet|abonemen|tak|berubah', '2020-02-03 11:00:32'),
+	(34, 'layanan|internet|mati|kapan|normal|kembali', '2020-02-03 11:00:32'),
+	(35, 'koneksi|internet|mengecewakan|tolong|segera|perbaiki', '2020-02-03 11:00:32'),
+	(36, 'internet|tv|kabel|dan|telepon|mati|adakah|kompensasinya', '2020-02-03 11:00:33'),
+	(37, 'internet|masih|error|laporan|dinyatakan|selesai', '2020-02-03 11:00:33'),
+	(38, 'dianggap|belum|membayar|paket|add-on|indihome|tidak|bisa|dinikmati', '2020-02-03 11:00:33'),
+	(39, 'tagihan|melonjak|kecewa|layanan|program|triple|play', '2020-02-03 11:00:33'),
+	(40, 'pengajuan|upgrade|kecepatan|internet|tidak|ada|kejelasan', '2020-02-03 11:00:33');
 /*!40000 ALTER TABLE `tokenize` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.user
@@ -5670,7 +5886,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`us_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.user: ~1 rows (approximately)
+-- Dumping data for table sentimen.user: ~0 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 REPLACE INTO `user` (`us_id`, `us_username`, `us_password`) VALUES
 	(1, 'admin', '123456');

@@ -154,37 +154,76 @@
                 ]);
             }
         
-        $queryCek = "select * from data_crawling";
-        $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
+
+        // curl detik com
+            $html = get_html('https://www.detik.com/search/searchall?query=indihome&siteid=2');
+            $dom = new DomDocument();
+
+            @$dom->loadHTML($html);
+
+            $classname  = "list-berita";
+            $finder 	= new DomXPath($dom);
+            $spaner 	= $finder->query("//*[contains(@class, '$classname')]");
+            $span 		= $spaner->item(0);
+            $articles 	=  $span->getElementsByTagName('article');
+
+            // print_r($article->item(1));
+
+            $loop = 0;
+
+            foreach ($articles as $key => $article) {
+
+                $input 	= $article->getElementsByTagName('h2');
+                $tgl 	= $article->getElementsByTagName('span');
+                $link 	= $article->getElementsByTagName('a');
+
+                $explode 		= explode(' ', $tgl->item(3)->nodeValue);
+                $linkExplode 	= explode('/', $link->item(0)->attributes[0]->value);
+
+                array_push($data, [
+                    'input'     => mysqli_real_escape_string($con, trim($input->item(0)->nodeValue)),
+                    'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $explode[1].' '.$explode[2].' '.$explode[3])),
+                    'author'    => mysqli_real_escape_string($con, 'Detik Inet'),
+                    'link'      => mysqli_real_escape_string($con, $link->item(0)->attributes[0]->value),
+                    'sumber'    => mysqli_real_escape_string($con, 'detik.com'),
+                    'id_post'   => 'Dc'.$linkExplode[4]
+                ]);
+                
+            }
+
+            print_r($data);
+
+        // $queryCek = "select * from data_crawling";
+        // $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
         
-        $postId = []; $dataReturned = []; $trigered = false;
+        // $postId = []; $dataReturned = []; $trigered = false;
         
-        while($row = $excuteOne->fetch_assoc()){
-            array_push($postId, $row['dc_post_id']);
-        }
+        // while($row = $excuteOne->fetch_assoc()){
+        //     array_push($postId, $row['dc_post_id']);
+        // }
 
-        $query = 'insert into data_crawling(dc_post_id, dc_author, dc_tanggal, dc_link, dc_sumber, dc_inputan, created_at) values ';
+        // $query = 'insert into data_crawling(dc_post_id, dc_author, dc_tanggal, dc_link, dc_sumber, dc_inputan, created_at) values ';
 
-        foreach ($data as $key => $dts) {
-            if(!in_array($dts['id_post'], $postId)){
-                $trigered = true;
-                array_push($dataReturned, $dts);
-                $query .= '("'.$dts['id_post'].'", "'.$dts['author'].'", "'.$dts['tgl'].'", "'.$dts['link'].'", "'.$dts['sumber'].'", "'.$dts['input'].'", "'.date('Y-m-d H:i:s').'"),';
-            } 
-        }
+        // foreach ($data as $key => $dts) {
+        //     if(!in_array($dts['id_post'], $postId)){
+        //         $trigered = true;
+        //         array_push($dataReturned, $dts);
+        //         $query .= '("'.$dts['id_post'].'", "'.$dts['author'].'", "'.$dts['tgl'].'", "'.$dts['link'].'", "'.$dts['sumber'].'", "'.$dts['input'].'", "'.date('Y-m-d H:i:s').'"),';
+        //     } 
+        // }
 
-        $qryVal = rtrim($query, ',');
+        // $qryVal = rtrim($query, ',');
 
-        if($trigered)
-            $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
+        // if($trigered)
+        //     $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
         
-        echo json_encode([
-            'status'    => 'berhasil',
-            'text'      => 'Data Berhasil Diambil',
-            'data'      => $dataReturned
-        ]);
+        // echo json_encode([
+        //     'status'    => 'berhasil',
+        //     'text'      => 'Data Berhasil Diambil',
+        //     'data'      => $dataReturned
+        // ]);
 
-        return true;
+        // return true;
 
     }catch(Exception $e){
         echo json_encode([
