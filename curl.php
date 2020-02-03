@@ -106,10 +106,10 @@
             foreach ($spaner as $key => $dd) {
                 $child = $spaner2->item(20);
 
-                // print_r($dd);
-
                 $author = $dd->getElementsByTagName('b');
                 $tgls = $dd->getElementsByTagName('span');
+
+                // print_r($tgls->item(7)->attributes[0]);
 
                 if($author->item(0)){
                     array_push($authors, $author->item(0)->nodeValue);
@@ -123,8 +123,6 @@
                 
                 $loop++;
             }
-
-            // echo $loop;
 
             $classname="js-tweet-text-container";
             $finder = new DomXPath($dom);
@@ -146,7 +144,7 @@
             foreach ($inputans as $key => $value) {
                 array_push($data, [
                     'input'     => mysqli_real_escape_string($con, trim($value)),
-                    'tgl'       => mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl[$key])),
+                    'tgl'       => /* mysqli_real_escape_string($con, preg_replace('/\s+/', ' ', $tgl[$key])) */ 'unset',
                     'author'    => mysqli_real_escape_string($con, '@'.$authors[$key]),
                     'link'      => mysqli_real_escape_string($con, 'https://twitter.com/'.$authors[$key].'/status/'.$ids[$key]),
                     'sumber'    => mysqli_real_escape_string($con, 'twitter.com'),
@@ -190,8 +188,6 @@
                 ]);
                 
             }
-
-            print_r($data);
 
         $queryCek = "select * from data_crawling";
         $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
