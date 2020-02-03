@@ -38,7 +38,7 @@
                     <div class="row" style="margin-top: -20px;">
                         <div class="col-md-12">
                             <div class="alert alert-info text-center">
-                                Jangan Lupa Untuk Memperbarui Data Terbaru. Terakhir diperbarui pada tanggal <b>19/01/2019</b>.<br/>
+                                Jangan Lupa Untuk Memperbarui Data Terbaru. Terakhir diperbarui pada tanggal <b><?= date('d/m/Y') ?></b>.<br/>
                                 <a class="btn btn-primary btn-sm" href="#" style="margin-top: 15px;" id="generate">Perbarui Data Sekarang</a>.
                             </div>
                         </div>

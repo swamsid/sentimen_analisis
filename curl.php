@@ -193,37 +193,37 @@
 
             print_r($data);
 
-        // $queryCek = "select * from data_crawling";
-        // $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
+        $queryCek = "select * from data_crawling";
+        $excuteOne = $con->query($queryCek) or die (mysqli_error($con));
         
-        // $postId = []; $dataReturned = []; $trigered = false;
+        $postId = []; $dataReturned = []; $trigered = false;
         
-        // while($row = $excuteOne->fetch_assoc()){
-        //     array_push($postId, $row['dc_post_id']);
-        // }
+        while($row = $excuteOne->fetch_assoc()){
+            array_push($postId, $row['dc_post_id']);
+        }
 
-        // $query = 'insert into data_crawling(dc_post_id, dc_author, dc_tanggal, dc_link, dc_sumber, dc_inputan, created_at) values ';
+        $query = 'insert into data_crawling(dc_post_id, dc_author, dc_tanggal, dc_link, dc_sumber, dc_inputan, created_at) values ';
 
-        // foreach ($data as $key => $dts) {
-        //     if(!in_array($dts['id_post'], $postId)){
-        //         $trigered = true;
-        //         array_push($dataReturned, $dts);
-        //         $query .= '("'.$dts['id_post'].'", "'.$dts['author'].'", "'.$dts['tgl'].'", "'.$dts['link'].'", "'.$dts['sumber'].'", "'.$dts['input'].'", "'.date('Y-m-d H:i:s').'"),';
-        //     } 
-        // }
+        foreach ($data as $key => $dts) {
+            if(!in_array($dts['id_post'], $postId)){
+                $trigered = true;
+                array_push($dataReturned, $dts);
+                $query .= '("'.$dts['id_post'].'", "'.$dts['author'].'", "'.$dts['tgl'].'", "'.$dts['link'].'", "'.$dts['sumber'].'", "'.$dts['input'].'", "'.date('Y-m-d H:i:s').'"),';
+            } 
+        }
 
-        // $qryVal = rtrim($query, ',');
+        $qryVal = rtrim($query, ',');
 
-        // if($trigered)
-        //     $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
+        if($trigered)
+            $excute = $result = $con->query($qryVal.'; ') or die (mysqli_error($con));
         
-        // echo json_encode([
-        //     'status'    => 'berhasil',
-        //     'text'      => 'Data Berhasil Diambil',
-        //     'data'      => $dataReturned
-        // ]);
+        echo json_encode([
+            'status'    => 'berhasil',
+            'text'      => 'Data Berhasil Diambil',
+            'data'      => $dataReturned
+        ]);
 
-        // return true;
+        return true;
 
     }catch(Exception $e){
         echo json_encode([
