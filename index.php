@@ -5,7 +5,7 @@
     if(!isset($_SESSION['login']))
         echo '<script> window.location = "login.php" </script>';
 
-    $sql = "SELECT (SELECT COUNT(*) FROM klasifikasi WHERE k_hasil = 'positif') AS positif, (SELECT COUNT(*) FROM klasifikasi WHERE k_hasil = 'negatif') AS negatif";
+    $sql = "SELECT (SELECT COUNT(*) FROM klasifikasi WHERE k_hasil = 'positif' and k_positif is not null) AS positif, (SELECT COUNT(*) FROM klasifikasi WHERE k_hasil = 'negatif' and k_negatif is not null) AS negatif";
     $result = $con->query($sql) or die (mysqli_error($con));
     $pie = $result->fetch_array();
 
