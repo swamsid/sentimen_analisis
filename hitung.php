@@ -577,7 +577,7 @@
                                 '<h5> - Dokumen Testing '+(idx + 1)+' &nbsp;<i class="fa fa-arrow-right"></i> &nbsp;<span class="text-navy">"'+testing.inputan+'"</span></h5>'
                             +'</div>';
 
-                    html += '<div style="padding: 0px 15px; margin-top: 10px;">'+
+                    html += '<div style="padding: 0px 15px; margin-top: 15px; margin-bottom: 25px;">'+
                                 '<table class="my-table">'+
                                     '<thead>'+
                                         '<tr>'+
