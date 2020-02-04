@@ -149,7 +149,7 @@
                                                         <div class="col-md-12 text-left">
                                                             <h3>Tabel Data Master</h3>
                                                         </div>
-                                                        <div class="col-md-12 text-left" style="margin-top: 5px;">
+                                                        <div class="col-md-12 text-left" style="margin-top: 5px; margin-bottom: 20px; max-width: 100%; max-height: 500px; overflow: scroll;">
                                                             <table class="my-table">
                                                                 <thead id="tabel-master-head">
                                                                 
@@ -171,7 +171,7 @@
                                                         <div class="col-md-6 text-left">
                                                             <h3>Proses Perhitungan Data Positif</h3>
                                                         </div>
-                                                        <div class="col-md-6 text-left" style="margin-top: 5px;">
+                                                        <div class="col-md-6 text-left" style="margin-top: 5px; margin-bottom: 20px; max-width: 100%; max-height: 500px; overflow: scroll;">
                                                             <table class="my-table">
                                                                 <thead id="tabel-positif-head">
                                                                 
@@ -182,7 +182,7 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6" style="margin-top: 5px; margin-bottom: 20px; max-width: 100%; max-height: 500px; overflow: scroll;">
                                                             <pre id="hitung-positif" style="text-align: left; background: white;">
                                                             
                                                             </pre>
@@ -196,7 +196,7 @@
                                                         <div class="col-md-6 text-left">
                                                             <h3>Proses Perhitungan Data Negatif</h3>
                                                         </div>
-                                                        <div class="col-md-6 text-left" style="margin-top: 5px;">
+                                                        <div class="col-md-6 text-left" style="margin-top: 5px; margin-bottom: 20px; max-width: 100%; max-height: 500px; overflow: scroll;">
                                                             <table class="my-table">
                                                                 <thead id="tabel-negatif-head">
                                                                 
@@ -207,7 +207,7 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6" style="margin-top: 5px; margin-bottom: 20px; max-width: 100%; max-height: 500px; overflow: scroll;">
                                                             <pre id="hitung-negatif" style="text-align: left; background: white;">
                                                             
                                                             </pre>
@@ -272,12 +272,12 @@
                                 if(resp.data.status == 'berhasil'){
                                     $('#loading').fadeOut(100);
 
-                                        generateTabelMasterHead(resp.data.words, resp.data.dataTraining, resp.data.dataTesting);
+                                        generateTabelMaster(resp.data.words, resp.data.dataTraining, resp.data.dataTesting);
                                         
-                                        generateTabelpositifHead(resp.data.dataTraining, resp.data.pPositif);
-                                        generateTabelNegatifHead(resp.data.dataTraining, resp.data.pPositif);
-                                        generateHitungPositif(resp.data.totTraining, resp.data.totPositif, resp.data.pPositif, resp.data.positifKeluar, resp.data.words);
-                                        generateHitungNegatif(resp.data.totTraining, resp.data.totNegatif, resp.data.pPositif, resp.data.negatifKeluar, resp.data.words);
+                                        generateTabelpositifHead(resp.data.dataTraining, resp.data.wordCountable);
+                                        generateTabelNegatifHead(resp.data.dataTraining, resp.data.wordCountable);
+                                        generateHitungPositif(resp.data.totTraining, resp.data.totPositif, resp.data.wordCountable, resp.data.positifKeluar, resp.data.words);
+                                        generateHitungNegatif(resp.data.totTraining, resp.data.totNegatif, resp.data.wordCountable, resp.data.negatifKeluar, resp.data.words);
                                         hitungTesting(resp.data.dataTesting);
                                         generateTableTesting(resp.data.dataTesting);
 
@@ -296,7 +296,7 @@
         })
 
         // fungsi untuk generate tabel master
-        function generateTabelMasterHead(words, training, testing){
+        function generateTabelMaster(words, training, testing){
 
             // generate head
                 let id = 1;
@@ -379,36 +379,36 @@
         function generateTabelpositifHead(training, pPositif){
             // generate head
                 let id = 1;
-                    let html = '<tr>'+
-                                    '<th width="30%">##</th>';
+                let html = '<tr>'+
+                                '<th width="30%">##</th>';
 
-                    let htmlBody = '';
+                let htmlBody = '';
 
-                    $.each(training, function(idx, data){
-                        // if(data.kelas == 'positif'){
-                            html += '<th> doc '+(id)+'</th>';
-                        // }
+                $.each(training, function(idx, data){
+                    if(data.hasPositif == 1){
+                        html += '<th> doc '+(id)+'</th>';
+                    }
 
-                        id++;
-                    });
+                    id++;
+                });
 
-                    html += '</tr>';
+                html += '</tr>';
 
-                    $('#tabel-positif-head').append(html);
+                $('#tabel-positif-head').append(html);
 
             // generate Body
                 $.each(pPositif, function(idx, positif){
-                    if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
+                    // if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
                         htmlBody += '<tr>'+
                                 '<td>'+positif.value+'</td>';
 
                         $.each(training, function(alpha, train){
-                            // if(train.kelas == 'positif'){
+                            if(train.hasPositif == 1){
                                 let stemmer = train.stemmer.split('|');
                                 let counter = 0;
 
                                 $.each(stemmer, function(beta, stem){
-                                    if(stem == positif.value){
+                                    if(stem == positif.value && positif.kelasText == 'positif'){
                                         counter += 1;
                                     }
                                 })
@@ -416,9 +416,9 @@
                                 let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
 
                                 htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
-                            // }
+                            }
                         })
-                    }
+                    // }
                 });
 
                 htmlBody += '</tr>';
@@ -435,16 +435,20 @@
 
             $.each(pPositif, function(idx, positif){
                 if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
-                    html += '   P ('+positif.value+' | Positif)';
-
-                    html += ' = ('+positif.count+' + 1) / '+positifKeluar+' + |'+words.length+'|';
-
-                    html += ' = '+(positif.count + 1) / (positifKeluar + words.length);
-
-                    html += '\n';
-
-                    hasilPositif[idx] = (positif.count + 1) / (positifKeluar + words.length);
+                    $counter = positif.count;
+                }else{
+                    $counter = 0;
                 }
+
+                html += '   P ('+positif.value+' | Positif)';
+
+                html += ' = ('+$counter+' + 1) / '+positifKeluar+' + |'+words.length+'|';
+
+                html += ' = '+($counter + 1) / (positifKeluar + words.length);
+
+                html += '\n';
+
+                hasilPositif[idx] = ($counter + 1) / (positifKeluar + words.length);
             })
 
             // console.log(hasilPositif);
@@ -453,55 +457,55 @@
         }
 
         //fungsi untuk generate tabel negatif
-        function generateTabelNegatifHead(training, pNegatif){
-            // generate head
-                let id = 1;
-                    let html = '<tr>'+
-                                    '<th width="30%">##</th>';
+            function generateTabelNegatifHead(training, pNegatif){
+                // generate head
+                    let id = 1;
+                        let html = '<tr>'+
+                                        '<th width="30%">##</th>';
 
-                    let htmlBody = '';
+                        let htmlBody = '';
 
-                    $.each(training, function(idx, data){
-                        if(data.kelas == 'negatif'){
-                            html += '<th> doc '+(id)+'</th>';
-                        }
+                        $.each(training, function(idx, data){
+                            if(data.hasNegatif == 1){
+                                html += '<th> doc '+(id)+'</th>';
+                            }
 
-                        id++;
+                            id++;
+                        });
+
+                        html += '</tr>';
+
+                        $('#tabel-negatif-head').append(html);
+
+                // generate Body
+                    $.each(pNegatif, function(idx, negatif){
+                        // if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
+                            htmlBody += '<tr>'+
+                                    '<td>'+negatif.value+'</td>';
+
+                            $.each(training, function(alpha, train){
+                                if(train.hasNegatif == 1){
+                                    let stemmer = train.stemmer.split('|');
+                                    let counter = 0;
+
+                                    $.each(stemmer, function(beta, stem){
+                                        if(stem == negatif.value && negatif.kelasText == 'negatif'){
+                                            counter += 1;
+                                        }
+                                    })
+
+                                    let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
+
+                                    htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
+                                }
+                            })
+                        // }
                     });
 
-                    html += '</tr>';
+                    htmlBody += '</tr>';
 
-                    $('#tabel-negatif-head').append(html);
-
-            // generate Body
-                $.each(pNegatif, function(idx, negatif){
-                    if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
-                        htmlBody += '<tr>'+
-                                '<td>'+negatif.value+'</td>';
-
-                        $.each(training, function(alpha, train){
-                            if(train.kelas == 'negatif'){
-                                let stemmer = train.stemmer.split('|');
-                                let counter = 0;
-
-                                $.each(stemmer, function(beta, stem){
-                                    if(stem == negatif.value){
-                                        counter += 1;
-                                    }
-                                })
-
-                                let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
-
-                                htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
-                            }
-                        })
-                    }
-                });
-
-                htmlBody += '</tr>';
-
-                $('#tabel-negatif-body').append(htmlBody);
-        }
+                    $('#tabel-negatif-body').append(htmlBody);
+            }
 
         function generateHitungNegatif(totTraining, totNegatif, pNegatif, negatifKeluar, words){
             let html = '';
@@ -512,16 +516,20 @@
 
             $.each(pNegatif, function(idx, negatif){
                 if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
-                    html += '   P ('+negatif.value+' | negatif)';
-
-                    html += ' = ('+negatif.count+' + 1) / '+negatifKeluar+' + |'+words.length+'|';
-
-                    html += ' = '+(negatif.count + 1) / (negatifKeluar + words.length);
-
-                    html += '\n';
-
-                    hasilNegatif[idx] = (negatif.count + 1) / (negatifKeluar + words.length);
+                    $counter = negatif.count;
+                }else{
+                    $counter = 0;
                 }
+
+                html += '  P ('+negatif.value+' | negatif)';
+
+                html += ' = ('+$counter+' + 1) / '+negatifKeluar+' + |'+words.length+'|';
+
+                html += ' = '+($counter + 1) / (negatifKeluar + words.length);
+
+                html += '\n';
+
+                hasilNegatif[idx] = ($counter + 1) / (negatifKeluar + words.length);
             })
 
             // console.log(hasilNegatif);
@@ -562,7 +570,7 @@
             var html = '';
 
             $.each(dataTesting, function(idx, testing){
-                if(!testing.stemmer == ""){
+                if(testing.stemmer != ""){
                     let np = nilaiPositif; let nn = nilaiNegatif;
 
                     html += '<div class="col-md-12">'+
