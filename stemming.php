@@ -134,7 +134,7 @@
 
             });
 
-            $('.dataTables-example').on('click', '.btn-detail', function(evt)
+            $('.dataTables-example').on('click', '.btn-detail', function(evt){
                 evt.preventDefault();
 
                 var ctx = $(this);

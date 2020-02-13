@@ -166,7 +166,7 @@
 
         // print_r($dataTraining);
 
-    // proses hitung data testing Negatif
+    // proses hitung data testing
         foreach($wordCountable as $key => $wordCount){
             if($wordCount['kelasText'] == 'positif'){
                 $hasilNegatif[$key] = (0 + 1) / ($negatifKeluar + count($words));

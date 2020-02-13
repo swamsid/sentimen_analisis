@@ -156,7 +156,7 @@
                                                                 </thead>
 
                                                                 <tbody id="tabel-master-body">
-                                                                
+
                                                                 </tbody>
 
                                                                 <tfoot id="tabel-master-footer"></tfoot>
@@ -268,7 +268,9 @@
                     $('#loading').fadeIn();
                     axios.get('proses_hitung.php')
                             .then((resp) => {
+
                                 console.log(resp.data);
+
                                 if(resp.data.status == 'berhasil'){
                                     $('#loading').fadeOut(100);
 
@@ -296,167 +298,167 @@
         })
 
         // fungsi untuk generate tabel master
-        function generateTabelMaster(words, training, testing){
+            function generateTabelMaster(words, training, testing){
 
-            // generate head
-                let id = 1;
-                let html = '<tr>'+
-                                '<th width="10%">##</th>';
+                // generate head
+                    let id = 1;
+                    let html = '<tr>'+
+                                    '<th width="10%">##</th>';
 
-                let htmlBody = '';
+                    let htmlBody = '';
 
-                $.each(training, function(idx, data){
-                    html += '<th> doc '+(id)+'</th>'
+                    $.each(training, function(idx, data){
+                        html += '<th> doc '+(id)+'</th>'
 
-                    id++;
-                });
+                        id++;
+                    });
 
-                $.each(testing, function(idx, data){
-                    html += '<th> doc '+(id)+'</th>'
+                    $.each(testing, function(idx, data){
+                        html += '<th> doc '+(id)+'</th>'
 
-                    id++;
-                });
+                        id++;
+                    });
 
-                html += '</tr>';
+                    html += '</tr>';
 
-                $('#tabel-master-head').append(html);
+                    $('#tabel-master-head').append(html);
 
-            // generate Body
-                $.each(words, function(idx, data){
-                    htmlBody += '<tr>'+
-                                    '<td>'+data+'</td>';
+                // generate Body
+                    $.each(words, function(idx, data){
+                        htmlBody += '<tr>'+
+                                        '<td>'+data+'</td>';
 
-                    $.each(training, function(alpha, train){
-                        let stemmer = train.stemmer.split('|');
-                        let counter = 0;
+                        $.each(training, function(alpha, train){
+                            let stemmer = train.stemmer.split('|');
+                            let counter = 0;
 
-                        $.each(stemmer, function(beta, stem){
-                            if(stem == data){
-                                counter += 1;
-                            }
+                            $.each(stemmer, function(beta, stem){
+                                if(stem == data){
+                                    counter += 1;
+                                }
+                            })
+
+                            let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
+
+                            htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
                         })
 
-                        let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
+                        $.each(testing, function(alpha, train){
+                            let stemmer = train.stemmer.split('|');
+                            let counter = 0;
 
-                        htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
+                            $.each(stemmer, function(beta, stem){
+                                if(stem == data){
+                                    counter += 1;
+                                }
+                            })
+
+                            let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
+
+                            htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
+                        })
+
+                        htmlBody += '</tr>';
+
+                    });
+
+                    htmlFooter = '<tr>'+
+                                    '<td class="text-center">Kelas</td>';
+
+                    $.each(training, function(alpha, train){
+                        htmlFooter += '<td class="text-center">'+train.kelas+'</td>';
                     })
 
                     $.each(testing, function(alpha, train){
-                        let stemmer = train.stemmer.split('|');
-                        let counter = 0;
-
-                        $.each(stemmer, function(beta, stem){
-                            if(stem == data){
-                                counter += 1;
-                            }
-                        })
-
-                        let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
-
-                        htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
+                        htmlFooter += '<td class="text-center">???</td>';
                     })
+
+                    $('#tabel-master-body').append(htmlBody);
+                    $('#tabel-master-footer').append(htmlFooter);
+            }
+
+        // fungsi untuk generate tabel positif
+            function generateTabelpositifHead(training, pPositif){
+                // generate head
+                    let id = 1;
+                    let html = '<tr>'+
+                                    '<th width="30%">##</th>';
+
+                    let htmlBody = '';
+
+                    $.each(training, function(idx, data){
+                        if(data.kelas == 'positif'){
+                            html += '<th> doc '+(id)+'</th>';
+                        }
+
+                        id++;
+                    });
+
+                    html += '</tr>';
+
+                    $('#tabel-positif-head').append(html);
+
+                // generate Body
+                    $.each(pPositif, function(idx, positif){
+                        // if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
+                            htmlBody += '<tr>'+
+                                    '<td>'+positif.value+'</td>';
+
+                            $.each(training, function(alpha, train){
+                                if(train.kelas == 'positif'){
+                                    let stemmer = train.stemmer.split('|');
+                                    let counter = 0;
+
+                                    $.each(stemmer, function(beta, stem){
+                                        if(stem == positif.value && positif.kelasText == 'positif'){
+                                            counter += 1;
+                                        }
+                                    })
+
+                                    let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
+
+                                    htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
+                                }
+                            })
+                        // }
+                    });
 
                     htmlBody += '</tr>';
 
-                });
+                    $('#tabel-positif-body').append(htmlBody);
+            }
 
-                htmlFooter = '<tr>'+
-                                '<td class="text-center">Kelas</td>';
+            function generateHitungPositif(totTraining, totPositif, pPositif, positifKeluar, words){
+                let html = '';
 
-                $.each(training, function(alpha, train){
-                    htmlFooter += '<td class="text-center">'+train.kelas+'</td>';
-                })
+                html += "P('positif')    = "+totPositif+'/'+totTraining+' = '+totPositif/totTraining;
+                nilaiPositif = totPositif/totTraining;
+                html += '\n\n';
 
-                $.each(testing, function(alpha, train){
-                    htmlFooter += '<td class="text-center">???</td>';
-                })
-
-                $('#tabel-master-body').append(htmlBody);
-                $('#tabel-master-footer').append(htmlFooter);
-        }
-
-        //fungsi untuk generate tabel positif
-        function generateTabelpositifHead(training, pPositif){
-            // generate head
-                let id = 1;
-                let html = '<tr>'+
-                                '<th width="30%">##</th>';
-
-                let htmlBody = '';
-
-                $.each(training, function(idx, data){
-                    if(data.kelas == 'positif'){
-                        html += '<th> doc '+(id)+'</th>';
+                $.each(pPositif, function(idx, positif){
+                    if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
+                        $counter = positif.countPositif;
+                    }else{
+                        $counter = 0;
                     }
 
-                    id++;
-                });
+                    html += '   P ('+positif.value+' | Positif)';
 
-                html += '</tr>';
+                    html += ' = ('+$counter+' + 1) / '+positifKeluar+' + |'+words.length+'|';
 
-                $('#tabel-positif-head').append(html);
+                    html += ' = '+($counter + 1) / (positifKeluar + words.length);
 
-            // generate Body
-                $.each(pPositif, function(idx, positif){
-                    // if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
-                        htmlBody += '<tr>'+
-                                '<td>'+positif.value+'</td>';
+                    html += '\n';
 
-                        $.each(training, function(alpha, train){
-                            if(train.kelas == 'positif'){
-                                let stemmer = train.stemmer.split('|');
-                                let counter = 0;
+                    hasilPositif[idx] = ($counter + 1) / (positifKeluar + words.length);
+                })
 
-                                $.each(stemmer, function(beta, stem){
-                                    if(stem == positif.value && positif.kelasText == 'positif'){
-                                        counter += 1;
-                                    }
-                                })
+                // console.log(hasilPositif);
 
-                                let styles = (counter > 0) ? 'background: rgba(0, 255, 0, 0.2); font-weight: bold;' : '';
+                $('#hitung-positif').html(html);
+            }
 
-                                htmlBody += '<td class="text-center" style="'+styles+'">'+counter+'</td>';
-                            }
-                        })
-                    // }
-                });
-
-                htmlBody += '</tr>';
-
-                $('#tabel-positif-body').append(htmlBody);
-        }
-
-        function generateHitungPositif(totTraining, totPositif, pPositif, positifKeluar, words){
-            let html = '';
-
-            html += "P('positif')    = "+totPositif+'/'+totTraining+' = '+totPositif/totTraining;
-            nilaiPositif = totPositif/totTraining;
-            html += '\n\n';
-
-            $.each(pPositif, function(idx, positif){
-                if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
-                    $counter = positif.countPositif;
-                }else{
-                    $counter = 0;
-                }
-
-                html += '   P ('+positif.value+' | Positif)';
-
-                html += ' = ('+$counter+' + 1) / '+positifKeluar+' + |'+words.length+'|';
-
-                html += ' = '+($counter + 1) / (positifKeluar + words.length);
-
-                html += '\n';
-
-                hasilPositif[idx] = ($counter + 1) / (positifKeluar + words.length);
-            })
-
-            // console.log(hasilPositif);
-
-            $('#hitung-positif').html(html);
-        }
-
-        //fungsi untuk generate tabel negatif
+        // fungsi untuk generate tabel negatif
             function generateTabelNegatifHead(training, pNegatif){
                 // generate head
                     let id = 1;
@@ -507,117 +509,115 @@
                     $('#tabel-negatif-body').append(htmlBody);
             }
 
-        function generateHitungNegatif(totTraining, totNegatif, pNegatif, negatifKeluar, words){
-            let html = '';
+            function generateHitungNegatif(totTraining, totNegatif, pNegatif, negatifKeluar, words){
+                let html = '';
 
-            html += "P('negatif')    = "+totNegatif+'/'+totTraining+' = '+totNegatif/totTraining;
-            nilaiNegatif = totNegatif/totTraining;
-            html += '\n\n';
+                html += "P('negatif')    = "+totNegatif+'/'+totTraining+' = '+totNegatif/totTraining;
+                nilaiNegatif = totNegatif/totTraining;
+                html += '\n\n';
 
-            $.each(pNegatif, function(idx, negatif){
-                if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
-                    $counter = negatif.countNegatif;
-                }else{
-                    $counter = 0;
-                }
+                $.each(pNegatif, function(idx, negatif){
+                    if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
+                        $counter = negatif.countNegatif;
+                    }else{
+                        $counter = 0;
+                    }
 
-                html += '  P ('+negatif.value+' | negatif)';
+                    html += '  P ('+negatif.value+' | negatif)';
 
-                html += ' = ('+$counter+' + 1) / '+negatifKeluar+' + |'+words.length+'|';
+                    html += ' = ('+$counter+' + 1) / '+negatifKeluar+' + |'+words.length+'|';
 
-                html += ' = '+($counter + 1) / (negatifKeluar + words.length);
+                    html += ' = '+($counter + 1) / (negatifKeluar + words.length);
 
-                html += '\n';
+                    html += '\n';
 
-                hasilNegatif[idx] = ($counter + 1) / (negatifKeluar + words.length);
-            })
+                    hasilNegatif[idx] = ($counter + 1) / (negatifKeluar + words.length);
+                })
 
-            // console.log(hasilNegatif);
+                // console.log(hasilNegatif);
 
-            $('#hitung-negatif').html(html);
-        }
+                $('#hitung-negatif').html(html);
+            }
 
         // function menghitung data testing
-        function hitungTesting(dataTesting){
-            $.each(dataTesting, function(idx, testing){
-                hasilTestingPositif[idx] = new Object();
-                hasilTestingNegatif[idx] = new Object();
+            function hitungTesting(dataTesting){
+                $.each(dataTesting, function(idx, testing){
+                    hasilTestingPositif[idx] = new Object();
+                    hasilTestingNegatif[idx] = new Object();
 
-                $.each(testing.stemmer.split('|'), function(alpha, stem){
-                    if(hasilPositif[stem]){
-                        hasilTestingPositif[idx][stem] = {
-                            'value'  : hasilPositif[stem],
-                            'text'   : stem
-                        };
-                    }
+                    $.each(testing.stemmer.split('|'), function(alpha, stem){
+                        if(hasilPositif[stem]){
+                            hasilTestingPositif[idx][stem] = {
+                                'value'  : hasilPositif[stem],
+                                'text'   : stem
+                            };
+                        }
 
-                    if(hasilNegatif[stem]){
-                        hasilTestingNegatif[idx][stem] = {
-                            'value'  : hasilNegatif[stem],
-                            'text'   : stem
-                        };
-                    }
+                        if(hasilNegatif[stem]){
+                            hasilTestingNegatif[idx][stem] = {
+                                'value'  : hasilNegatif[stem],
+                                'text'   : stem
+                            };
+                        }
+                    })
                 })
-            })
 
-            // console.log(hasilTestingNegatif);
+                // console.log(hasilTestingNegatif);
 
-        }
+            }
 
         // generate tabel testing
-        function generateTableTesting(dataTesting){
+            function generateTableTesting(dataTesting){
 
-            var html = '';
+                var html = '';
 
-            $.each(dataTesting, function(idx, testing){
-                if(testing.stemmer != ""){
-                    let np = nilaiPositif; let nn = nilaiNegatif;
+                $.each(dataTesting, function(idx, testing){
+                    if(testing.stemmer != ""){
+                        let np = nilaiPositif; let nn = nilaiNegatif;
 
-                    html += '<div class="col-md-12">'+
-                                '<h5> - Dokumen Testing '+(idx + 1)+' &nbsp;<i class="fa fa-arrow-right"></i> &nbsp;<span class="text-navy">"'+testing.inputan+'"</span></h5>'
-                            +'</div>';
+                        html += '<div class="col-md-12">'+
+                                    '<h5> - Dokumen Testing '+(idx + 1)+' &nbsp;<i class="fa fa-arrow-right"></i> &nbsp;<span class="text-navy">"'+testing.inputan+'"</span></h5>'
+                                +'</div>';
 
-                    html += '<div style="padding: 0px 15px; margin-top: 15px; margin-bottom: 25px;">'+
-                                '<table class="my-table">'+
-                                    '<thead>'+
-                                        '<tr>'+
-                                            '<th>Hasil Stemming</th>'+
-                                            '<th>Nilai Positif</th>'+
-                                            '<th>Nilai Negatif</th>'+
-                                            '<th>Kesimpulan</th>'+
-                                        '</tr>'+
-                                    '</thead>'+
+                        html += '<div style="padding: 0px 15px; margin-top: 15px; margin-bottom: 25px;">'+
+                                    '<table class="my-table">'+
+                                        '<thead>'+
+                                            '<tr>'+
+                                                '<th>Hasil Stemming</th>'+
+                                                '<th>Nilai Positif</th>'+
+                                                '<th>Nilai Negatif</th>'+
+                                                '<th>Kesimpulan</th>'+
+                                            '</tr>'+
+                                        '</thead>'+
 
-                                    '<tbody>'+
-                                        '<tr>'+
-                                            '<td class="text-center">'+testing.stemmer+'</td>';
+                                        '<tbody>'+
+                                            '<tr>'+
+                                                '<td class="text-center">'+testing.stemmer+'</td>';
 
-                    $.each(hasilTestingPositif[idx], function(alpha, positif){
-                        np += positif.value;
-                    });
+                        $.each(hasilTestingPositif[idx], function(alpha, positif){
+                            np += positif.value;
+                        });
 
-                    $.each(hasilTestingNegatif[idx], function(alpha, negatif){
-                        nn += negatif.value;
-                    });
+                        $.each(hasilTestingNegatif[idx], function(alpha, negatif){
+                            nn += negatif.value;
+                        });
 
-                    let kesimpulan = (np > nn) ? 'Positif' : 'Negatif';
-                    let clas = (np > nn) ? 'text-success' : 'text-danger';
+                        let kesimpulan = (np > nn) ? 'Positif' : 'Negatif';
+                        let clas = (np > nn) ? 'text-success' : 'text-danger';
 
-                    html += '<td class="text-center">'+np+'</td>'+
-                            '<td class="text-center">'+nn+'</td>'+
-                            '<td class="text-center '+clas+'" style="font-weight: bold;">'+kesimpulan+'</td>'+
-                                        '</tr>'+
-                                    '</tbody>'+
-                                '</table>'+
-                            '</div>';
-                }
-            })
+                        html += '<td class="text-center">'+np+'</td>'+
+                                '<td class="text-center">'+nn+'</td>'+
+                                '<td class="text-center '+clas+'" style="font-weight: bold;">'+kesimpulan+'</td>'+
+                                            '</tr>'+
+                                        '</tbody>'+
+                                    '</table>'+
+                                '</div>';
+                    }
+                })
 
-            $('#hasil-testing').html(html);
+                $('#hasil-testing').html(html);
 
-            
-
-        }
+            }
     </script>
 
 </body>
