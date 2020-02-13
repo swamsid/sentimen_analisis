@@ -24,19 +24,30 @@
                     $execute = $con->query($cek) or die (mysqli_error($con));
 
                     while($rest = $execute->fetch_assoc()){
+                        // echo $rest['counter'];
                         if($rest['counter'] != '0'){
+                            $pos = $neg = 0;
+
+                            if($training['k_hasil'] == 'positif')
+                                $pos += 1;
+                            else
+                                $neg += 1;
+
                             if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
                                 array_push($words, $glue);
                             }
 
                             if(!array_key_exists($glue, $wordCountable)){
+
                                 $wordCountable[$glue] = [
-                                    'value'     => $glue,
-                                    'count'     => 1,
-                                    'kelasText' => ''
+                                    'value'             => $glue,
+                                    'countPositif'      => $pos,
+                                    'countNegatif'      => $neg,
+                                    'kelasText'         => ''
                                 ];
                             }else{
-                                $wordCountable[$glue]['count'] += 1;
+                                $wordCountable[$glue]['countPositif'] += $pos;
+                                $wordCountable[$glue]['countNegatif'] += $neg;
                             }
                         }
                     }
@@ -116,10 +127,10 @@
                     $wordCountable[$key]['kelasText'] = $rest['kl_kelas'];
 
                     if($rest['kl_kelas'] == 'positif'){
-                        $positifKeluar += $wordCountable[$key]['count'];
+                        $positifKeluar += $wordCountable[$key]['countPositif'];
                         // echo $wordCountable[$key]['value'].'<br/>';
                     }else{
-                        $negatifKeluar += $wordCountable[$key]['count'];
+                        $negatifKeluar += $wordCountable[$key]['countNegatif'];
                     }
                 }else{
                     if($wordCountable[$key]['kelasText'] != $rest['kl_kelas']){
@@ -160,7 +171,7 @@
             if($wordCount['kelasText'] == 'positif'){
                 $hasilNegatif[$key] = (0 + 1) / ($negatifKeluar + count($words));
             }else{
-                $hasilNegatif[$key] = ($wordCount['count'] + 1) / ($negatifKeluar + count($words));
+                $hasilNegatif[$key] = ($wordCount['countNegatif'] + 1) / ($negatifKeluar + count($words));
             }
         }
 
@@ -168,7 +179,7 @@
             if($wordCount['kelasText'] == 'negatif'){
                 $hasilPositif[$key] = (0 + 1) / ($positifKeluar + count($words));
             }else{
-                $hasilPositif[$key] = ($wordCount['count'] + 1) / ($positifKeluar + count($words));
+                $hasilPositif[$key] = ($wordCount['countPositif'] + 1) / ($positifKeluar + count($words));
             }
         }
 
@@ -214,7 +225,7 @@
             $query = 'insert into klasifikasi(k_stemmer, k_data, k_positif, k_negatif, k_hasil) values 
                         ('.$testing['idStem'].', '.$testing['idData'].', '.$np.', '.$nn.', "'.$ha.'")';
                         
-            $execute = $con->query($query) or die (mysqli_error($con));
+            // $execute = $con->query($query) or die (mysqli_error($con));
         }
 
 

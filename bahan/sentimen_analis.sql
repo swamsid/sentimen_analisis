@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `case_folding` (
   CONSTRAINT `FK_case_folding_data_crawling` FOREIGN KEY (`cf_data`) REFERENCES `data_crawling` (`dc_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.case_folding: ~0 rows (approximately)
+-- Dumping data for table sentimen.case_folding: ~43 rows (approximately)
 /*!40000 ALTER TABLE `case_folding` DISABLE KEYS */;
 REPLACE INTO `case_folding` (`cf_data`, `cf_case_folding`, `created_at`) VALUES
 	(1, 'pelayanan indihome sangat mengecewakan', '2020-02-03 11:00:24'),
@@ -69,7 +69,10 @@ REPLACE INTO `case_folding` (`cf_data`, `cf_case_folding`, `created_at`) VALUES
 	(37, 'internet masih error, laporan dinyatakan selesai', '2020-02-03 11:00:33'),
 	(38, 'dianggap belum membayar, paket add-on indihome tidak bisa dinikmati', '2020-02-03 11:00:33'),
 	(39, 'tagihan melonjak, kecewa layanan program triple play', '2020-02-03 11:00:33'),
-	(40, 'pengajuan upgrade kecepatan internet tidak ada kejelasan', '2020-02-03 11:00:33');
+	(40, 'pengajuan upgrade kecepatan internet tidak ada kejelasan', '2020-02-03 11:00:33'),
+	(41, 'pemasangan indiehome tidak jelas waktunya', '2020-02-12 20:54:56'),
+	(42, 'ni knapa yak ... tiba" mati @indiehome', '2020-02-12 20:54:56'),
+	(43, 'tanggapan lama, kecewa layanan customer service indiehome', '2020-02-13 17:15:06');
 /*!40000 ALTER TABLE `case_folding` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.data_crawling
@@ -84,9 +87,9 @@ CREATE TABLE IF NOT EXISTS `data_crawling` (
   `dc_inputan` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`dc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.data_crawling: ~0 rows (approximately)
+-- Dumping data for table sentimen.data_crawling: ~43 rows (approximately)
 /*!40000 ALTER TABLE `data_crawling` DISABLE KEYS */;
 REPLACE INTO `data_crawling` (`dc_id`, `dc_post_id`, `dc_author`, `dc_tanggal`, `dc_link`, `dc_sumber`, `dc_inputan`, `created_at`) VALUES
 	(1, '1', 'Adi Wijaya', '6 januari 2017', 'https://mediakonsumen.com/2017/01/06/surat-pembaca/pelayanan-indihome-sangat-mengecewakan', 'Mediakonsumen.com', 'Pelayanan Indihome Sangat Mengecewakan', '2020-02-03 10:50:47'),
@@ -128,7 +131,10 @@ REPLACE INTO `data_crawling` (`dc_id`, `dc_post_id`, `dc_author`, `dc_tanggal`, 
 	(37, '37', '9 maret 2017', 'Bobby', 'https://news.detik.com/suara-pembaca/d-3442221/internet-masih-error-laporan-dinyatakan-selesai?_ga=2.200275310.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Internet Masih Error, Laporan Dinyatakan Selesai', '2020-02-03 11:00:21'),
 	(38, '38', '16 maret 2017', 'Kenny', 'https://news.detik.com/suara-pembaca/d-3448958/dianggap-belum-membayar-paket-add-on-indihome-tidak-bisa-dinikmati?_ga=2.200275310.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Dianggap belum Membayar, Paket Add-On IndiHome tidak Bisa Dinikmati', '2020-02-03 10:50:47'),
 	(39, '39', '10 april 2017', 'Fransiska', 'https://news.detik.com/suara-pembaca/d-3470272/tagihan-melonjak-kecewa-layanan-program-triple-play?_ga=2.3535472.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Tagihan Melonjak, Kecewa Layanan Program Triple Play', '2020-02-03 10:50:47'),
-	(40, '40', '6 mei 2017', 'vincent', 'https://news.detik.com/suara-pembaca/d-3493736/pengajuan-upgrade-kecepatan-internet-tidak-ada-kejelasan?_ga=2.3535472.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Pengajuan Upgrade Kecepatan Internet tidak Ada Kejelasan', '2020-02-03 10:50:47');
+	(40, '40', '6 mei 2017', 'vincent', 'https://news.detik.com/suara-pembaca/d-3493736/pengajuan-upgrade-kecepatan-internet-tidak-ada-kejelasan?_ga=2.3535472.1930462395.1558351405-211737454.1558351405', 'detik.com', 'Pengajuan Upgrade Kecepatan Internet tidak Ada Kejelasan', '2020-02-03 10:50:47'),
+	(41, '41', NULL, NULL, NULL, NULL, 'Pemasangan indiehome tidak jelas waktunya', '2020-02-12 20:53:29'),
+	(42, '42', NULL, NULL, NULL, NULL, 'ni knapa yak ... tiba" mati @indiehome', '2020-02-12 20:54:02'),
+	(43, '43', NULL, NULL, NULL, NULL, 'tanggapan lama, kecewa layanan customer service indiehome', '2020-02-12 20:55:05');
 /*!40000 ALTER TABLE `data_crawling` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.kamus_liu
@@ -5667,7 +5673,7 @@ CREATE TABLE IF NOT EXISTS `klasifikasi` (
   CONSTRAINT `FK_klasifikasi_stemmer` FOREIGN KEY (`k_stemmer`) REFERENCES `stemmer` (`s_data`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sentimen.klasifikasi: ~0 rows (approximately)
+-- Dumping data for table sentimen.klasifikasi: ~42 rows (approximately)
 /*!40000 ALTER TABLE `klasifikasi` DISABLE KEYS */;
 REPLACE INTO `klasifikasi` (`k_stemmer`, `k_data`, `k_positif`, `k_negatif`, `k_hasil`, `created_at`) VALUES
 	(1, 1, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
@@ -5708,8 +5714,8 @@ REPLACE INTO `klasifikasi` (`k_stemmer`, `k_data`, `k_positif`, `k_negatif`, `k_
 	(36, 36, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
 	(37, 37, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
 	(38, 38, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
-	(39, 39, NULL, NULL, 'negatif', '2020-02-03 11:05:52'),
-	(40, 40, NULL, NULL, 'negatif', '2020-02-03 11:05:52');
+	(39, 39, NULL, NULL, 'negatif', '2020-02-12 20:52:43'),
+	(40, 40, NULL, NULL, 'negatif', '2020-02-12 20:52:51');
 /*!40000 ALTER TABLE `klasifikasi` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.stemmer
@@ -5722,7 +5728,7 @@ CREATE TABLE IF NOT EXISTS `stemmer` (
   CONSTRAINT `FK_stemmer_data_crawling` FOREIGN KEY (`s_data`) REFERENCES `stopword` (`s_data`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.stemmer: ~0 rows (approximately)
+-- Dumping data for table sentimen.stemmer: ~47 rows (approximately)
 /*!40000 ALTER TABLE `stemmer` DISABLE KEYS */;
 REPLACE INTO `stemmer` (`s_data`, `s_stemmer`, `created_at`) VALUES
 	(1, 'sangat', '2020-02-03 11:00:25'),
@@ -5764,7 +5770,10 @@ REPLACE INTO `stemmer` (`s_data`, `s_stemmer`, `created_at`) VALUES
 	(37, 'masih|selesai', '2020-02-03 11:00:33'),
 	(38, 'belum|paket|tidak|bisa', '2020-02-03 11:00:33'),
 	(39, 'kecewa|program', '2020-02-03 11:00:33'),
-	(40, 'tidak|ada', '2020-02-03 11:00:34');
+	(40, 'tidak|ada', '2020-02-03 11:00:34'),
+	(41, 'tidak|jelas', '2020-02-12 20:54:56'),
+	(42, 'ni|tiba|mati', '2020-02-12 20:54:56'),
+	(43, 'lama|kecewa', '2020-02-13 17:15:07');
 /*!40000 ALTER TABLE `stemmer` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.stopword
@@ -5777,7 +5786,7 @@ CREATE TABLE IF NOT EXISTS `stopword` (
   CONSTRAINT `FK_stopword_data_crawling` FOREIGN KEY (`s_data`) REFERENCES `tokenize` (`t_data`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.stopword: ~0 rows (approximately)
+-- Dumping data for table sentimen.stopword: ~46 rows (approximately)
 /*!40000 ALTER TABLE `stopword` DISABLE KEYS */;
 REPLACE INTO `stopword` (`s_data`, `s_stopword`, `created_at`) VALUES
 	(1, 'pelayanan|indihome|sangat|mengecewakan', '2020-02-03 11:00:24'),
@@ -5819,7 +5828,10 @@ REPLACE INTO `stopword` (`s_data`, `s_stopword`, `created_at`) VALUES
 	(37, 'internet|masih|error|laporan|dinyatakan|selesai', '2020-02-03 11:00:33'),
 	(38, 'dianggap|belum|membayar|paket|add-on|indihome|tidak|bisa|dinikmati', '2020-02-03 11:00:33'),
 	(39, 'tagihan|melonjak|kecewa|layanan|program|triple|play', '2020-02-03 11:00:33'),
-	(40, 'pengajuan|upgrade|kecepatan|internet|tidak|ada|kejelasan', '2020-02-03 11:00:33');
+	(40, 'pengajuan|upgrade|kecepatan|internet|tidak|ada|kejelasan', '2020-02-03 11:00:33'),
+	(41, 'pemasangan|indiehome|tidak|jelas|waktunya', '2020-02-12 20:54:56'),
+	(42, 'ni|knapa|yak|tiba|mati|indiehome', '2020-02-12 20:54:56'),
+	(43, 'tanggapan|lama|kecewa|layanan|customer|service|indiehome', '2020-02-13 17:15:07');
 /*!40000 ALTER TABLE `stopword` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.tokenize
@@ -5832,7 +5844,7 @@ CREATE TABLE IF NOT EXISTS `tokenize` (
   CONSTRAINT `FK_tokenize_data_crawling` FOREIGN KEY (`t_data`) REFERENCES `case_folding` (`cf_data`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table sentimen.tokenize: ~0 rows (approximately)
+-- Dumping data for table sentimen.tokenize: ~43 rows (approximately)
 /*!40000 ALTER TABLE `tokenize` DISABLE KEYS */;
 REPLACE INTO `tokenize` (`t_data`, `t_tokenize`, `created_at`) VALUES
 	(1, 'pelayanan|indihome|sangat|mengecewakan', '2020-02-03 11:00:24'),
@@ -5874,7 +5886,10 @@ REPLACE INTO `tokenize` (`t_data`, `t_tokenize`, `created_at`) VALUES
 	(37, 'internet|masih|error|laporan|dinyatakan|selesai', '2020-02-03 11:00:33'),
 	(38, 'dianggap|belum|membayar|paket|add-on|indihome|tidak|bisa|dinikmati', '2020-02-03 11:00:33'),
 	(39, 'tagihan|melonjak|kecewa|layanan|program|triple|play', '2020-02-03 11:00:33'),
-	(40, 'pengajuan|upgrade|kecepatan|internet|tidak|ada|kejelasan', '2020-02-03 11:00:33');
+	(40, 'pengajuan|upgrade|kecepatan|internet|tidak|ada|kejelasan', '2020-02-03 11:00:33'),
+	(41, 'pemasangan|indiehome|tidak|jelas|waktunya', '2020-02-12 20:54:56'),
+	(42, 'ni|knapa|yak|tiba|mati|indiehome', '2020-02-12 20:54:56'),
+	(43, 'tanggapan|lama|kecewa|layanan|customer|service|indiehome', '2020-02-13 17:15:07');
 /*!40000 ALTER TABLE `tokenize` ENABLE KEYS */;
 
 -- Dumping structure for table sentimen.user

@@ -385,7 +385,7 @@
                 let htmlBody = '';
 
                 $.each(training, function(idx, data){
-                    if(data.hasPositif == 1){
+                    if(data.kelas == 'positif'){
                         html += '<th> doc '+(id)+'</th>';
                     }
 
@@ -403,7 +403,7 @@
                                 '<td>'+positif.value+'</td>';
 
                         $.each(training, function(alpha, train){
-                            if(train.hasPositif == 1){
+                            if(train.kelas == 'positif'){
                                 let stemmer = train.stemmer.split('|');
                                 let counter = 0;
 
@@ -435,7 +435,7 @@
 
             $.each(pPositif, function(idx, positif){
                 if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
-                    $counter = positif.count;
+                    $counter = positif.countPositif;
                 }else{
                     $counter = 0;
                 }
@@ -466,7 +466,7 @@
                         let htmlBody = '';
 
                         $.each(training, function(idx, data){
-                            if(data.hasNegatif == 1){
+                            if(data.kelas == 'negatif'){
                                 html += '<th> doc '+(id)+'</th>';
                             }
 
@@ -484,7 +484,7 @@
                                     '<td>'+negatif.value+'</td>';
 
                             $.each(training, function(alpha, train){
-                                if(train.hasNegatif == 1){
+                                if(train.kelas == 'negatif'){
                                     let stemmer = train.stemmer.split('|');
                                     let counter = 0;
 
@@ -516,7 +516,7 @@
 
             $.each(pNegatif, function(idx, negatif){
                 if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
-                    $counter = negatif.count;
+                    $counter = negatif.countNegatif;
                 }else{
                     $counter = 0;
                 }
