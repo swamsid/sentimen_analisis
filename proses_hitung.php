@@ -205,7 +205,9 @@
 
     // menghitung hasil akhir per data testing dan menyimpan di database
         foreach($dataTesting as $key => $testing){
-            $nn = $totNegatif/$totTraning ; $np = $totPositif/$totTraning;
+            // $nn = $totNegatif/$totTraning ; $np = $totPositif/$totTraning;
+
+            $nn = 0; $np = 0;
 
             // echo json_encode($hasilTestingNegatif);
 
