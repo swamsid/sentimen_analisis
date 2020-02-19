@@ -15,6 +15,7 @@
         $a = 1;
 
         while($training = $trainingResult->fetch_assoc()){
+            $inKamus = false;
             // echo $training['s_stemmer'];
 
             // if(!$training['s_stemmer'] == ""){
@@ -49,6 +50,8 @@
                                 $wordCountable[$glue]['countPositif'] += $pos;
                                 $wordCountable[$glue]['countNegatif'] += $neg;
                             }
+
+                            $inKamus = true;
                         }
                     }
 
@@ -62,15 +65,17 @@
                     $totNegatif += 1;
                 }
             // }
-
-            array_push($dataTraining, [
-                'stemmer'       => $training['s_stemmer'],
-                'kelas'         => $training['k_hasil'],
-                'hasNegatif'    => 0,
-                'hasPositif'    => 0
-            ]);
-
-            $totTraning += 1;
+            
+            if($inKamus){
+                array_push($dataTraining, [
+                    'stemmer'       => $training['s_stemmer'],
+                    'kelas'         => $training['k_hasil'],
+                    'hasNegatif'    => 0,
+                    'hasPositif'    => 0
+                ]);
+    
+                $totTraning += 1;
+            }
         };
 
     // proses mengambil data testing sekaligus mengambil text potongan dari hasil stemmer
@@ -87,9 +92,9 @@
 
                     while($rest = $execute->fetch_assoc()){
                         if($rest['counter'] != '0'){
-                            if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
-                                array_push($words, $glue);
-                            }
+                            // if(!in_array($glue, $words) && $training['s_stemmer'] != ''){
+                            //     array_push($words, $glue);
+                            // }
 
                             // if(!array_key_exists($glue, $wordCountable)){
                             //     $wordCountable[$glue] = [
@@ -127,14 +132,10 @@
                     $wordCountable[$key]['kelasText'] = $rest['kl_kelas'];
 
                     if($rest['kl_kelas'] == 'positif'){
-                        $positifKeluar += $wordCountable[$key]['countPositif'];
+                        $positifKeluar ++;
                         // echo $wordCountable[$key]['value'].'<br/>';
                     }else{
-                        $negatifKeluar += $wordCountable[$key]['countNegatif'];
-                    }
-                }else{
-                    if($wordCountable[$key]['kelasText'] != $rest['kl_kelas']){
-                        $wordCountable[$key]['kelasText'] == 'multi';
+                        $negatifKeluar ++;
                     }
                 }
             }
