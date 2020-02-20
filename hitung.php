@@ -401,8 +401,14 @@
                 // generate Body
                     $.each(pPositif, function(idx, positif){
                         // if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
+                            let style = '';
+
+                            if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
+                                style = 'background: #0099CC; color : white;';
+                            }
+
                             htmlBody += '<tr>'+
-                                    '<td>'+positif.value+'</td>';
+                                    '<td style="'+style+'">'+positif.value+'</td>';
 
                             $.each(training, function(alpha, train){
                                 if(train.kelas == 'positif'){
@@ -431,9 +437,9 @@
             function generateHitungPositif(totTraining, totPositif, pPositif, positifKeluar, words){
                 let html = '';
 
-                html += "P('positif')    = "+totPositif+'/'+totTraining+' = '+totPositif/totTraining;
-                nilaiPositif = totPositif/totTraining;
-                html += '\n\n';
+                // html += "P('positif')    = "+totPositif+'/'+totTraining+' = '+totPositif/totTraining;
+                // nilaiPositif = totPositif/totTraining;
+                // html += '\n\n';
 
                 $.each(pPositif, function(idx, positif){
                     if(positif.kelasText == 'positif' || positif.kelasText == 'multi'){
@@ -441,6 +447,8 @@
                     }else{
                         $counter = 0;
                     }
+
+                    // $counter =  positif.countPositif + positif.countNegatif
 
                     html += '   P ('+positif.value+' | Positif)';
 
@@ -482,8 +490,15 @@
                 // generate Body
                     $.each(pNegatif, function(idx, negatif){
                         // if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
+                            
+                            let style = '';
+                            
+                            if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
+                                style = 'background: #0099CC; color : white;';
+                            }
+
                             htmlBody += '<tr>'+
-                                    '<td>'+negatif.value+'</td>';
+                                    '<td style="'+style+'">'+negatif.value+'</td>';
 
                             $.each(training, function(alpha, train){
                                 if(train.kelas == 'negatif'){
@@ -512,9 +527,9 @@
             function generateHitungNegatif(totTraining, totNegatif, pNegatif, negatifKeluar, words){
                 let html = '';
 
-                html += "P('negatif')    = "+totNegatif+'/'+totTraining+' = '+totNegatif/totTraining;
-                nilaiNegatif = totNegatif/totTraining;
-                html += '\n\n';
+                // html += "P('negatif')    = "+totNegatif+'/'+totTraining+' = '+totNegatif/totTraining;
+                // nilaiNegatif = totNegatif/totTraining;
+                // html += '\n\n';
 
                 $.each(pNegatif, function(idx, negatif){
                     if(negatif.kelasText == 'negatif' || negatif.kelasText == 'multi'){
@@ -562,7 +577,7 @@
                     })
                 })
 
-                // console.log(hasilTestingNegatif);
+                console.log(hasilTestingNegatif);
 
             }
 
@@ -604,6 +619,17 @@
 
                         let kesimpulan = (np > nn) ? 'Positif' : 'Negatif';
                         let clas = (np > nn) ? 'text-success' : 'text-danger';
+
+                        if(nn == 0)
+                            nn = 'null';
+                        
+                        if(np == 0)
+                            np = 'null';
+
+                        if(nn == 'null' && np == 'null'){
+                            kesimpulan = 'null';
+                            clas = 'text-warning'
+                        }
 
                         html += '<td class="text-center">'+np+'</td>'+
                                 '<td class="text-center">'+nn+'</td>'+
